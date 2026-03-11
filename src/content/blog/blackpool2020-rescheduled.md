@@ -1,0 +1,41 @@
+---
+title: "ブラックプール ダンスフェスティバル 2020年 延期 8-9月開催へ"
+description: "新型コロナウィルスがヨーロッパでも流行していることから、毎年6月に開催されていたブラックプールダンスフェスティバルも延期となりました。 延期日は、8/25〜9/6が現時点では予定されています。 公式リリースが来ましたので、翻訳文とともに掲載致します。 以下翻訳文 ブラックプールのダンスフェスティバル 日程変更のお知らせ Blackpool Entertainment Company Limited"
+pubDate: "2020-03-20T09:58:47"
+updatedDate: "2020-03-20T10:20:24"
+heroImage: "/assets/images/blackpool_dance_festival-rescheduled_3.jpg"
+categories: ["blackpooldancefestival", "competition"]
+tags: []
+author: "itxdancer"
+draft: false
+wpId: 796
+wpSlug: "blackpool2020-rescheduled"
+---
+
+新型コロナウィルスがヨーロッパでも流行していることから、毎年6月に開催されていたブラックプールダンスフェスティバルも延期となりました。 延期日は、8/25〜9/6が現時点では予定されています。 公式リリースが来ましたので、翻訳文とともに掲載致します。  
+
+## 以下翻訳文
+
+ブラックプールのダンスフェスティバル 日程変更のお知らせ Blackpool Entertainment Company Limited(BECL)は、英国政府、外務省、連邦政府、および英国の公衆衛生機関の助言に基づき、WDC ALヨーロッパ選手権、Blackpoolジュニアダンスフェスティバル、およびBlackpoolダンスフェスティバルの日程を変更することを発表しました。 BECLのマネジング・ディレクター、マイケル・ウィリアムズ氏は、 残念ながら、政府の最新の公式勧告を受けて、ウィンター・ガーデンが閉鎖されたことを発表した。我々は、更なる通告があるまで閉鎖されたままであり、政府の勧告に従い、できる限り速やかに再開する。私たちは事態がすぐに正常に戻ることを願っており、近い将来、ブラックプールのウィンター・ガーデンに皆が戻ってくることを願っています。皆様におかれましては、引き続きご理解とご支援を賜りますようお願い申し上げます。皆様とご家族に心からご多幸をお祈りいたします。 私たちのフェスティバルに毎年参加する世界中のゲストやダンサーの安全は、この非常に困難な時代を乗り切る上で最も重要です。状況が進展した場合に備えて、今後数週間にわたって連絡を取り合い、最新情報をお伝えします。23 (月) より、ボックスオフィスとダンスフェスティバルオフィスは閉鎖いたします。 大変混み合っておりますので、お電話を頂くことはご遠慮くださいますようお願い申し上げます。 今後数週間のアップデートについては、当社のウェブサイトとソーシャルチャネルを参照してください。 以下の日程変更が確認されています。 
+
+  * DPAとWDC ALとのヨーロッパダンス選手権が、10月15~17日に開催される(当初の日付10-4月12日)。
+  * ブラックプール・ジュニア・ダンス・フェスティバルは現在、8月31日から9月4日まではボールルーム、ラテンとシーケンス、そして9月19日から20日まではフォーメーションのイベントです。(当初日付16-4月19日)
+  * ブラックプール・ダンス・フェスティバルは、現時点では、8月25日から9月6日まで開催予定。 (当初の日付16-5月29日)イベント主催者は、British Dance Council(BDC)からのコンサルテーションとアドバイスを受けた後、数週間のうちにすべての参加者、後援者、出展者と連絡を取り、払い戻しを手配し、再調整された日程について話し合います。
+
+ 
+
+ 
+
+## 以下原文
+
+> Blackpool Dance Festivals Rescheduled Blackpool Entertainment Company Limited (BECL) has announced the rescheduling of the WDC AL European Championships, The Blackpool Junior Dance Festival and the Blackpool Dance Festival following the advice of the UK Government, Foreign and Commonwealth Office and Public Health Agencies in England. Michael Williams, Managing Director of BECL said: “We regret to announce that the Winter Gardens has closed in light of the most recent official government advice. We will remain closed until further notice and will re-open as soon as possible, following government recommendations. We are hopeful that things will get back to normal soon and we hope to see everyone return to the Winter Gardens, Blackpool, in the not too distant future. I would like to take this opportunity to thank you all for your continued support and understanding. I do send my sincere best wishes to you all and your families. The safety of our guests and dancers from around the world who all attend our Festivals annually is paramount to us as we look to work our way through these very challenging times. We will remain in contact over the coming weeks to keep everyone up to date as the situation develops. From Monday 23 rd March our Box Office and Dance Festival Office will be closed. We would respectfully request that patrons refrain from calling us at this time as our team are exceedingly busy at present so please bear with us as we work through the rescheduling of shows and events at this challenging time.” Please refer to our website and social channels for further updates over the coming weeks. I can now confirm that the following Festivals will be rescheduled as follows: The European Dance Championships in association with the DPA and WDC AL is now from 15 th to 17 th October (Original dates 10 – 12 April ) The Blackpool Junior Dance Festival is now from 31 st August to 4 th September Ballroom, Latin and Sequence events, and from 19 th to 20 th September – Formation events. (Original Dates 16 – 19 April) Blackpool Dance Festival is now from 25 th August to 6 th September (Original dates 16 – 29 May) The event organisers will be in contact with all entrants, patrons and exhibitors over the coming weeks to arrange any refunds and discuss the rearranged dates following consultation and advice from the British Dance Council (BDC). Blackpool Dance Festivals Rescheduled Blackpool Entertainment Company Limited (BECL) has announced the rescheduling of the WDC AL European Championships, The Blackpool Junior Dance Festival and the Blackpool Dance Festival following the advice of the UK Government, Foreign and Commonwealth Office and Public Health Agencies in England. Michael Williams, Managing Director of BECL said: “We regret to announce that the Winter Gardens has closed in light of the most recent official government advice. We will remain closed until further notice and will re-open as soon as possible, following government recommendations. We are hopeful that things will get back to normal soon and we hope to see everyone return to the Winter Gardens, Blackpool, in the not too distant future. I would like to take this opportunity to thank you all for your continued support and understanding. I do send my sincere best wishes to you all and your families. The safety of our guests and dancers from around the world who all attend our Festivals annually is paramount to us as we look to work our way through these very challenging times. We will remain in contact over the coming weeks to keep everyone up to date as the situation develops. From Monday 23 rd March our Box Office and Dance Festival Office will be closed. We would respectfully request that patrons refrain from calling us at this time as our team are exceedingly busy at present so please bear with us as we work through the rescheduling of shows and events at this challenging time.” Please refer to our website and social channels for further updates over the coming weeks. I can now confirm that the following Festivals will be rescheduled as follows: The European Dance Championships in association with the DPA and WDC AL is now from 15 th to 17 th October (Original dates 10 – 12 April ) The Blackpool Junior Dance Festival is now from 31 st August to 4 th September Ballroom, Latin and Sequence events, and from 19 th to 20 th September – Formation events. (Original Dates 16 – 19 April) Blackpool Dance Festival is now from 25 th August to 6 th September (Original dates 16 – 29 May) The event organisers will be in contact with all entrants, patrons and exhibitors over the coming weeks to arrange any refunds and discuss the rearranged dates following consultation and advice from the British Dance Council (BDC).
+
+ 
+
+## リリース文書 PDF版
+
+[Blackpool Dance Festivals Rescheduled](<https://itxdancer.com/dance_festival_press_release2020/>)  
+
+## 公式サイト
+
+https://www.blackpooldancefestival.com/     https://itxdancer.com/video/category/wdc/bpd/

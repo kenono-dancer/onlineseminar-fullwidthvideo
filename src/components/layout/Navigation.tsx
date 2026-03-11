@@ -1,0 +1,176 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    // Only run scroll spy on homepage
+    if (pathname !== '/') {
+      return;
+    }
+
+    const handleScroll = () => {
+      const sections = ['home', 'features', 'community', 'cta', 'wisdom'];
+      let current = 'home';
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100) {
+            current = section;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: '/#features', label: '社交ダンスセミナー', id: 'features' },
+    { href: '/#community', label: '体幹トレーニング', id: 'community' },
+    { href: '/#cta', label: 'プライベートレッスン', id: 'cta' },
+    { href: '/#wisdom', label: '講師 大埜健', id: 'wisdom' },
+  ];
+
+  return (
+    <nav className="bg-background/80 border-border/40 relative sticky top-0 z-50 flex w-full items-center justify-between border-b px-6 py-4 shadow-sm backdrop-blur-lg md:px-12">
+      <a
+        href="/"
+        className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
+      >
+        <span className="font-heading text-foreground text-2xl font-bold">
+          ITxDANCER
+        </span>
+      </a>
+
+      {/* Desktop Nav */}
+      <div className="hidden items-center gap-8 font-medium md:flex">
+        {navLinks.map((link) => (
+          <a
+            key={link.id}
+            href={link.href}
+            data-testid={`link-${link.id}`}
+            className={`relative w-fit transition-colors ${(pathname === '/' && activeSection === link.id) ||
+              (pathname.startsWith(link.href) && link.href !== '/')
+              ? 'text-primary font-bold'
+              : 'text-muted-foreground hover:text-primary'
+              }`}
+          >
+            <motion.div whileHover={{ scale: 1.05 }}>
+              {link.label}
+              {((pathname === '/' &&
+                activeSection === link.id) ||
+                (pathname.startsWith(link.href) &&
+                  link.href !== '/')) && (
+                  <motion.div
+                    layoutId="activeIndicatorNav"
+                    className="bg-primary absolute right-0 bottom-[-4px] left-0 h-1 rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+            </motion.div>
+          </a>
+        ))}
+        <div className="flex flex-col items-center gap-1">
+          <a
+            href="https://line.me/R/ti/p/@your_id"
+            className="flex items-center bg-[#06C755] text-white px-2 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <div className="flex flex-col items-center leading-none -space-y-0.5">
+              <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
+                LINE ▶
+              </span>
+              <span className="text-xs md:text-base font-bold tracking-tight">
+                ここから参加
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Mobile Nav Toggle */}
+      <button
+        className="text-foreground bg-primary/10 hover:bg-primary/25 rounded-full p-2 transition-colors md:hidden"
+        onClick={() => setIsOpen(!isOpen)}
+        data-testid="button-menu-toggle"
+      >
+        {isOpen ? <X /> : <Menu />}
+      </button>
+
+      {/* Mobile Nav Menu */}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="bg-card border-border/60 absolute top-full right-4 left-4 z-50 mt-2 flex w-[calc(100%-2rem)] flex-col gap-6 rounded-2xl border p-8 shadow-2xl md:hidden"
+          >
+            {navLinks.map((link, idx) => (
+              <motion.a
+                key={link.id}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                data-testid={`link-${link.id}-mobile`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{
+                  delay: idx * 0.08,
+                  duration: 0.25,
+                  ease: 'easeOut',
+                }}
+                whileHover={{ x: 4 }}
+                className={`w-fit text-center text-lg font-medium transition-colors duration-300 ${(pathname === '/' &&
+                  activeSection === link.id) ||
+                  (pathname.startsWith(link.href) && link.href !== '/')
+                  ? 'text-primary font-bold'
+                  : 'text-foreground hover:text-primary'
+                  }`}
+              >
+                {link.label}
+              </motion.a>
+            ))}
+            <motion.div
+              className="border-border/40 border-t pt-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                delay: navLinks.length * 0.08 + 0.1,
+                duration: 0.25,
+              }}
+            >
+              <div className="flex flex-col items-center gap-2">
+                <a
+                  href="https://line.me/R/ti/p/@your_id"
+                  className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <div className="flex flex-col items-center leading-none -space-y-0.5">
+                    <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
+                      LINE ▶
+                    </span>
+                    <span className="text-base font-bold tracking-tight">
+                      ここから参加
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navigation;

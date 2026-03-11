@@ -4,172 +4,27 @@ import {
   Sparkles,
   Menu,
   X,
-  PawPrint,
   Users,
   BookOpen,
   Compass,
   Star,
   Lock,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  Dumbbell,
+  Video,
+  Activity,
+  PlayCircle,
+  User,
+  Target,
+  Smartphone,
+  Zap,
+  Coins,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'features', 'community', 'wisdom', 'cta'];
-      let current = 'home';
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            current = section;
-          }
-        }
-      }
-      setActiveSection(current);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { href: '#features', label: 'Philosophy', id: 'features' },
-    { href: '#community', label: 'Community', id: 'community' },
-    { href: '#wisdom', label: 'Wisdom', id: 'wisdom' },
-  ];
-
-  return (
-    <nav className="bg-background/80 border-border/40 relative sticky top-0 z-50 flex w-full items-center justify-between border-b px-6 py-6 shadow-sm backdrop-blur-lg md:px-12">
-      <a
-        href="/"
-        className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
-      >
-        <PawPrint className="h-8 w-8" />
-        <span className="font-heading text-foreground text-2xl font-bold">
-          Purrfectly Zen
-        </span>
-      </a>
-
-      {/* Desktop Nav */}
-      <div className="hidden items-center gap-8 font-medium md:flex">
-        {navLinks.map((link) => (
-          <a
-            key={link.id}
-            href={link.href}
-            data-testid={`link-${link.id}`}
-            className={`relative w-fit transition-colors ${
-              activeSection === link.id
-                ? 'text-primary font-bold'
-                : 'text-muted-foreground hover:text-primary'
-            }`}
-          >
-            <motion.div whileHover={{ scale: 1.05 }}>
-              {link.label}
-              {activeSection === link.id && (
-                <motion.div
-                  layoutId="activeIndicator"
-                  className="bg-primary absolute right-0 bottom-0 left-0 h-1 rounded-full"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-            </motion.div>
-          </a>
-        ))}
-        <a href="/join">
-          <button
-            data-testid="button-join-nav"
-            className="font-heading bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-2 font-bold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-          >
-            Join the Clowder
-          </button>
-        </a>
-      </div>
-
-      {/* Mobile Nav Toggle */}
-      <button
-        className="text-foreground bg-primary/10 hover:bg-primary/25 rounded-full p-2 transition-colors md:hidden"
-        onClick={() => setIsOpen(!isOpen)}
-        data-testid="button-menu-toggle"
-      >
-        {isOpen ? <X /> : <Menu />}
-      </button>
-
-      {/* Mobile Nav Menu */}
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="bg-card border-border/60 absolute top-full right-4 left-4 z-50 mt-2 flex w-[calc(100%-2rem)] flex-col gap-6 rounded-2xl border p-8 shadow-2xl md:hidden"
-          >
-            {navLinks.map((link, idx) => (
-              <motion.a
-                key={link.id}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                data-testid={`link-${link.id}-mobile`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{
-                  delay: idx * 0.08,
-                  duration: 0.25,
-                  ease: 'easeOut',
-                }}
-                whileHover={{ x: 4 }}
-                className={`w-fit text-center text-lg font-medium transition-colors duration-300 ${
-                  activeSection === link.id
-                    ? 'text-primary font-bold'
-                    : 'text-foreground hover:text-primary'
-                }`}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.div
-              className="border-border/40 border-t pt-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                delay: navLinks.length * 0.08 + 0.1,
-                duration: 0.25,
-              }}
-            >
-              <a
-                href="/join"
-                className="block w-full"
-                onClick={() => setIsOpen(false)}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <button
-                    data-testid="button-join-mobile"
-                    className="font-heading bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-full py-4 font-medium shadow-lg transition-all hover:shadow-xl"
-                  >
-                    Join the Clowder
-                  </button>
-                </motion.div>
-              </a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-};
 
 const Hero = () => {
   return (
@@ -188,12 +43,13 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
-            Welcome home, human!
+            自宅から参加できる
           </span>
-          <h1 className="font-heading text-foreground mb-6 text-5xl leading-[1.1] font-bold md:text-7xl">
-            Let's find your inner{' '}
+          <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-6xl">
+            「なんとなく」のダンスから
+            <br />
             <span className="text-primary relative inline-block">
-              Zen
+              卒業しませんか？
               <svg
                 className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
                 viewBox="0 0 100 10"
@@ -206,13 +62,13 @@ const Hero = () => {
                   fill="none"
                 />
               </svg>
-            </span>{' '}
-            <br />
-            with a cat!
+            </span>
           </h1>
-          <p className="text-muted-foreground max-w-md text-lg leading-relaxed md:text-xl">
-            The purrfect place to disconnect from the noise and reconnect with
-            what matters: peace, presence, and gentle purrs.
+          <p className="text-muted-foreground max-w-md text-base leading-relaxed md:text-lg">
+            社交ダンスを、もっと深く、正しく、美しく。<br />
+            運動学と機能解剖学という「地図」を持てば、上達への迷いはなくなります。<br />
+            社交ダンスの理論が求める理想のポスチャーや動きを、骨格レベルから再構築しましょう。<br />
+            <span className="text-primary font-bold">一緒に学び練習し、身につけましょう。</span>
           </p>
 
           {/* Trust Badges */}
@@ -223,14 +79,14 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Star, label: '5 Rated', color: 'text-yellow-600' },
-              { icon: Lock, label: '100% Free', color: 'text-green-600' },
+              { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-600' },
+              { icon: Lock, label: '【セミナーは無料】', color: 'text-green-600' },
               {
                 icon: CheckCircle,
-                label: 'Science-Backed',
+                label: '【機能解剖学】',
                 color: 'text-purple-600',
               },
-              { icon: Heart, label: 'Community Loved', color: 'text-red-600' },
+              { icon: Heart, label: '【500回以上継続】', color: 'text-red-600' },
             ].map((badge, idx) => (
               <motion.div
                 key={idx}
@@ -274,8 +130,8 @@ const Hero = () => {
               <Sparkles size={20} />
             </div>
             <div>
-              <p className="text-sm font-bold">99% Stress Free!</p>
-              <p className="text-muted-foreground text-xs">Guaranteed purrs</p>
+              <p className="text-sm font-bold">無料で参加</p>
+              <p className="text-muted-foreground text-[10px]">社交ダンスセミナー</p>
             </div>
           </motion.div>
 
@@ -294,8 +150,8 @@ const Hero = () => {
               <Users size={20} />
             </div>
             <div>
-              <p className="text-sm font-bold">500K+ Members</p>
-              <p className="text-muted-foreground text-xs">Growing community</p>
+              <p className="text-sm font-bold">500回以上開催</p>
+              <p className="text-muted-foreground text-xs">since 2018</p>
             </div>
           </motion.div>
         </motion.div>
@@ -346,7 +202,30 @@ const FeatureCard = ({
   </motion.div>
 );
 
-const Features = () => {
+export interface Post {
+  id: string;
+  title: string;
+  description: string;
+  heroImage: string;
+}
+
+const Features = ({ posts = [] }: { posts?: Post[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev + 3 >= posts.length ? 0 : prev + 3
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev - 3 < 0 ? Math.max(0, posts.length - 3) : prev - 3
+    );
+  };
+
+  const visiblePosts = posts.slice(currentIndex, currentIndex + 3);
+
   return (
     <section
       id="features"
@@ -355,36 +234,85 @@ const Features = () => {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
-            Why cats are gurus
+            誰でも無料で参加できる
           </span>
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            The Way of the Meow
+            オンライン社交ダンスセミナー
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <FeatureCard
-            title="Master of Chill"
-            desc="Learn the ancient art of doing absolutely nothing and looking fabulous while doing it."
-            img="/images/meditating_cat_illustration.png"
-            delay={0.1}
-            testId="card-feature-chill"
-          />
-          <FeatureCard
-            title="Playful Spirit"
-            desc="Rediscover your inner kitten. Chase dreams (and butterflies) with reckless abandon."
-            img="/images/playful_cat_illustration.png"
-            delay={0.2}
-            testId="card-feature-playful"
-          />
-          <FeatureCard
-            title="Soul Nourishment"
-            desc="Feed your heart with unconditional love, head bumps, and the occasional slow blink."
-            img="/images/cat_with_food_illustration.png"
-            delay={0.3}
-            testId="card-feature-nourishment"
-          />
+        <div className="relative">
+          {posts.length > 3 && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute left-[-20px] md:left-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-10"
+                aria-label="Previous posts"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-[-20px] md:right-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-10"
+                aria-label="Next posts"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </>
+          )}
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {posts.length > 0 ? (
+              visiblePosts.map((post, idx) => (
+                <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
+                  <FeatureCard
+                    title={post.title}
+                    desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
+                    img={post.heroImage || '/images/meditating_cat_illustration.png'}
+                    delay={0.1 * (idx + 1)}
+                    testId={`card-feature-${idx}`}
+                  />
+                </a>
+              ))
+            ) : (
+              <>
+                <FeatureCard
+                  title="Master of Chill"
+                  desc="Learn the ancient art of doing absolutely nothing and looking fabulous while doing it."
+                  img="/images/meditating_cat_illustration.png"
+                  delay={0.1}
+                  testId="card-feature-chill"
+                />
+                <FeatureCard
+                  title="Playful Spirit"
+                  desc="Rediscover your inner kitten. Chase dreams (and butterflies) with reckless abandon."
+                  img="/images/playful_cat_illustration.png"
+                  delay={0.2}
+                  testId="card-feature-playful"
+                />
+                <FeatureCard
+                  title="Soul Nourishment"
+                  desc="Feed your heart with unconditional love, head bumps, and the occasional slow blink."
+                  img="/images/cat_with_food_illustration.png"
+                  delay={0.3}
+                  testId="card-feature-nourishment"
+                />
+              </>
+            )}
+          </div>
         </div>
+
+        {posts.length > 0 && (
+          <div className="mt-8 flex justify-end">
+            <a
+              href="/blog"
+              className="font-heading text-primary hover:text-primary/80 font-bold flex items-center gap-1 transition-colors group"
+            >
+              一覧へ
+              <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -393,25 +321,25 @@ const Features = () => {
 const Community = () => {
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'Meditation Teacher',
+      name: '社交ダンスに必要な',
+      role: '体幹トレーニングに特化',
       quote:
-        'Purrfectly Zen completely transformed how I view mindfulness. My cat approves too.',
-      image: '/images/sarah_chen_meditation_teacher_portrait.png',
+        '美しく踊るために欠かせないインナーマッスルを効率的に鍛えます。ダンス理論に基づいたトレーニングで、軸의ブレない安定した踊りを手に入れましょう。',
+      icon: <Activity className="text-primary h-8 w-8" />,
     },
     {
-      name: 'Marcus Johnson',
-      role: 'Wellness Coach',
+      name: '録画も見られる',
+      role: 'Youtube 限定動画',
       quote:
-        'The cat philosophy here resonates deeply. Simplicity, presence, and the power of a good nap.',
-      image: '/images/marcus_johnson_wellness_coach_portrait.png',
+        '全てのレッスンは録画され、限定公開動画として何度も復習可能です。リアルタイムで参加できない日も、後から自分の好きなタイミングで練習できます.',
+      icon: <PlayCircle className="text-primary h-8 w-8" />,
     },
     {
-      name: 'Elena Rodriguez',
-      role: 'Creative Director',
+      name: '25分 1,000円',
+      role: '最大4人まで',
       quote:
-        "I've never felt more zen. The community here truly understands the meow of life.",
-      image: '/images/elena_rodriguez_creative_director_portrait.png',
+        '少人数制のクラスなので、一人ひとりの動きをしっかりとチェック。低価格ながらも、パーソナルに近いきめ細やかなアドバイスが受けられます。',
+      icon: <Coins className="text-primary h-8 w-8" />,
     },
   ];
 
@@ -420,10 +348,10 @@ const Community = () => {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
-            Join our clowder
+            社交ダンスに特化した
           </span>
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            Community Stories
+            オンライン体幹トレーニング
           </h2>
         </div>
 
@@ -439,27 +367,35 @@ const Community = () => {
               <div className="bg-card h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
                 <div className="flex h-full flex-col p-8">
                   <div className="mb-6 flex items-center gap-4">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className="h-14 w-14 rounded-full object-cover"
-                    />
+                    <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full shrink-0">
+                      {person.icon}
+                    </div>
                     <div>
-                      <p className="font-heading text-foreground font-bold">
+                      <p className="font-heading text-foreground font-bold leading-tight">
                         {person.name}
                       </p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-sm mt-1">
                         {person.role}
                       </p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground flex-1 leading-relaxed italic">
-                    "{person.quote}"
+                  <p className="text-muted-foreground flex-1 leading-relaxed">
+                    {person.quote}
                   </p>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-end">
+          <a
+            href="/body-training/"
+            className="font-heading text-primary hover:text-primary/80 font-bold flex items-center gap-1 transition-colors group"
+          >
+            詳細へ
+            <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>
@@ -470,25 +406,47 @@ const QuoteSection = () => {
   return (
     <section
       id="wisdom"
-      className="bg-secondary/20 flex items-center justify-center px-6 py-24 text-center"
+      className="bg-secondary/20 flex flex-col items-center justify-center px-6 py-24 text-center"
     >
+      <div className="mb-12 space-y-4 text-center">
+        <span className="font-hand text-primary text-xl">
+          講師紹介
+        </span>
+        <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+          大埜 健（おおの けん）
+        </h2>
+      </div>
+
       <motion.div
-        className="relative max-w-3xl"
-        initial={{ opacity: 0, y: 20 }}
+        className="relative max-w-4xl flex flex-col md:flex-row items-center gap-10 bg-card p-8 md:p-12 rounded-[2rem] shadow-lg text-left"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h3
-          data-testid="text-quote"
-          className="font-hand text-foreground/80 text-3xl leading-relaxed md:text-5xl"
-        >
-          Time spent with cats is never wasted. It is a gentle reminder that we
-          are here to be loved, and to nap.
-        </h3>
+        <div className="w-full md:w-1/3 flex justify-center">
+          <img
+            src="/assets/images/ken_ono_3.png"
+            alt="大埜 健"
+            className="w-48 h-48 md:w-full md:h-auto rounded-full md:rounded-2xl object-cover shadow-md"
+          />
+        </div>
 
-        <div className="font-heading text-primary mt-8 font-bold">
-          — Sigmund Freud (probably)
+        <div className="w-full md:w-2/3 space-y-4">
+          <h3 className="text-2xl font-bold font-heading text-primary">元JBDFプロスタンダードA級 / 元アマ全日本ファイナリスト</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            東京都品川区でプロの社交ダンスインストラクターとして活動し、オンラインでの無料社交ダンスセミナーやプライベートレッスン、体幹トレーニングを提供しています。<br /><br />
+            IT業界での経験を活かし、ダンス界のデジタル化やオンラインレッスンの普及にも注力。解剖学や運動理論・トレーニング経験に基づいた科学的アプローチで、皆様の確実な上達をサポートいたします。
+          </p>
+
+          <div className="pt-6 border-t border-border mt-6">
+            <a
+              href="/ken-ono/"
+              className="inline-flex items-center gap-2 font-heading bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-3 font-bold shadow-md transition-all hover:translate-y-[-2px] hover:shadow-xl"
+            >
+              プロフィール全文を読む <ChevronRight size={20} />
+            </a>
+          </div>
         </div>
       </motion.div>
     </section>
@@ -509,14 +467,14 @@ export const Footer = () => {
             className="flex flex-col justify-center space-y-3"
           >
             <div className="flex items-center gap-3">
-              <PawPrint className="text-primary h-7 w-7" />
               <h3 className="font-heading text-foreground text-lg font-bold">
-                Purrfectly Zen
+                ITxDANCER
               </h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Find your zen, one breath at a time. Meditate with your inner cat
-              and discover peace within.
+              元プロA級ダンサーが教える、オンライン社交ダンスセミナー・プライベートレッスン・体幹トレーニング。
+              運動学と機能解剖学に基づいた理論的な指導で、ポスチャーや動きを骨格レベルから改善。
+              初心者から競技者まで、自宅から本格的に社交ダンスを学べます。
             </p>
           </motion.div>
 
@@ -613,16 +571,21 @@ export const Footer = () => {
                 journey.
               </p>
             </div>
-            <a href="/join" className="w-full">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                data-testid="button-footer-cta"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-full px-6 py-3 font-bold shadow-lg transition-all hover:shadow-xl"
+            <div className="flex flex-col items-center gap-2">
+              <a
+                href="https://line.me/R/ti/p/@your_id"
+                className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                Join the Clowder
-              </motion.button>
-            </a>
+                <div className="flex flex-col items-center leading-none -space-y-0.5">
+                  <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
+                    LINE ▶
+                  </span>
+                  <span className="text-base font-bold tracking-tight">
+                    ここから参加
+                  </span>
+                </div>
+              </a>
+            </div>
           </motion.div>
         </div>
 
@@ -649,14 +612,12 @@ export const Footer = () => {
   );
 };
 
-export default function Home() {
+export default function Home({ posts = [] }: { posts?: Post[] }) {
   return (
-    <div className="bg-background selection:bg-primary/20 selection:text-primary-foreground min-h-screen">
-      <Navigation />
+    <>
       <Hero />
-      <Features />
+      <Features posts={posts} />
       <Community />
-      <QuoteSection />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
@@ -666,42 +627,42 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-12 space-y-4 text-center"
           >
+            <span className="font-hand text-primary text-xl">
+              大埜健が直接指導する
+            </span>
             <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-              Ready to find your zen?
+              オンライン プライベートレッスン
             </h2>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-              Choose your path and start your zen journey today
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
               {
                 id: 'cta-start-app',
-                title: 'Start Meditating',
+                title: 'プライベートレッスン',
                 description:
-                  'Meditate with your inner cat. Start with our breathing timer and find your calm.',
+                  'あなたのためだけの時間。\n社交ダンスのオンラインレッスンはもちろん、デモや試合のビデオから改善点を見つける、トレーニング、練習、質問など自由にお使えます。',
                 href: '/app',
                 testId: 'button-cta-app',
-                icon: <Heart className="text-primary h-8 w-8" />,
+                icon: <User className="text-primary h-8 w-8" />,
               },
               {
                 id: 'cta-guide',
-                title: 'Start Learning',
+                title: '悩みや弱点を集中特訓',
                 description:
-                  'Learn the fundamentals of meditation. A step-by-step guide for beginners and beyond.',
+                  '苦手なステップを集中的に練習するのも良し。正しいテクニックを学ぶこと、そして繰り返し練習することが大切です。先生の目がある中で、繰り返し練習できます。',
                 href: '/guide',
                 testId: 'button-cta-guide',
-                icon: <BookOpen className="text-primary h-8 w-8" />,
+                icon: <Target className="text-primary h-8 w-8" />,
               },
               {
                 id: 'cta-explore',
-                title: 'Explore More',
+                title: '25分 2500円',
                 description:
-                  'Discover zen tips, breathing techniques, and daily affirmations to deepen your practice.',
+                  '好きな場所から参加できます。\nスマホやタブレット、PCがあればOK、移動時間の無駄をなくして、時間を有効活用できます。',
                 href: '/explore',
                 testId: 'button-cta-explore',
-                icon: <Compass className="text-primary h-8 w-8" />,
+                icon: <Coins className="text-primary h-8 w-8" />,
               },
             ].map((cta, idx) => (
               <motion.div
@@ -719,7 +680,7 @@ export default function Home() {
                 <h3 className="font-heading text-foreground text-2xl font-bold">
                   {cta.title}
                 </h3>
-                <p className="text-muted-foreground flex-1">
+                <p className="text-muted-foreground flex-1 whitespace-pre-line">
                   {cta.description}
                 </p>
                 <a href={cta.href}>
@@ -733,9 +694,19 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-8 flex justify-end">
+            <a
+              href="/online-ballroomdance-lesson/"
+              className="font-heading text-primary hover:text-primary/80 font-bold flex items-center gap-1 transition-colors group"
+            >
+              詳細へ
+              <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
         </div>
       </section>
-      <Footer />
-    </div>
+      <QuoteSection />
+    </>
   );
 }

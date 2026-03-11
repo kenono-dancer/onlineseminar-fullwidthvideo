@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import categoryMap from '../../data/categoryMap.json';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => {
+    const dateA = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
+    const dateB = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
+    return dateB - dateA;
+  });
+
+const catMap = new Map((Object.entries(categoryMap) as unknown) as [string, string][]);
+---
+
+<Layout title="オンライン社交ダンスセミナー - Purrfectly Zen" description="Read our latest updates and articles.">
+  <main class="container mx-auto px-4 py-16 mt-16 max-w-4xl">
+    <h1 class="text-4xl lg:text-5xl text-center mb-8 text-primary font-heading">オンライン社交ダンスセミナー</h1>
+    <p class="text-center text-muted-foreground mb-12">{posts.length} articles</p>
+    
+    <div class="grid gap-8">
+      {posts.map((post) => (
+        <article class="bg-card rounded-2xl p-6 shadow-sm border border-border flex flex-col sm:flex-row gap-6 hover:shadow-md transition-shadow">
+          {post.data.heroImage && (
+            <img
+              src={post.data.heroImage}
+              alt={post.data.title}
+              width="240"
+              height="135"
+              loading="lazy"
+              class="w-full sm:w-[240px] h-[135px] object-cover rounded-xl"
+            />
+          )}
+          <div class="flex-1 flex flex-col justify-center">
+            <h2 class="text-2xl mb-2 font-heading">
+              <a href={`/blog/${post.id}`} class="hover:text-primary transition-colors">{post.data.title}</a>
+            </h2>
+            <div class="flex flex-wrap gap-3 text-sm text-muted-foreground mb-3 font-medium">
+              {post.data.pubDate && (
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString('ja-JP')}
+                </time>
+              )}
+              {post.data.categories && post.data.categories.length > 0 && (
+                <div class="flex gap-2">
+                  {post.data.categories.map((cat: string) => (
+                    <span class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs">
+                      {catMap.get(cat) ?? cat}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+            {post.data.description && (
+              <p class="text-foreground/80 line-clamp-2">{post.data.description}</p>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>

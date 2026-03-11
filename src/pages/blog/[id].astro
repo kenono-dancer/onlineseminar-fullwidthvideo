@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import categoryMap from '../../data/categoryMap.json';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+const catMap = new Map((Object.entries(categoryMap) as unknown) as [string, string][]);
+---
+
+<Layout title={`${post.data.title} - Purrfectly Zen`} description={post.data.description || 'A blog post'}>
+  <main class="container mx-auto px-4 py-16 mt-16 max-w-3xl">
+    <article class="prose prose-stone lg:prose-lg mx-auto bg-card p-6 sm:p-10 rounded-3xl shadow-sm border border-border">
+      {post.data.heroImage && (
+        <img
+          src={post.data.heroImage}
+          alt=""
+          class="w-full h-auto rounded-2xl mb-8 object-cover"
+        />
+      )}
+      
+      <div class="mb-8 border-b border-border pb-6">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4 text-primary leading-tight">
+          {post.data.title}
+        </h1>
+        
+        <div class="flex flex-wrap gap-4 items-center text-muted-foreground text-sm font-medium">
+          {post.data.pubDate && (
+             <time datetime={post.data.pubDate.toISOString()}>
+               {post.data.pubDate.toLocaleDateString('ja-JP')}
+             </time>
+          )}
+          
+          {post.data.categories && post.data.categories.length > 0 && (
+             <div class="flex gap-2">
+               {post.data.categories.map((cat: string) => (
+                 <span class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs">
+                   {catMap.get(cat) ?? cat}
+                 </span>
+               ))}
+             </div>
+          )}
+        </div>
+      </div>
+      
+      <div class="mt-8 prose-img:rounded-xl prose-headings:font-heading prose-headings:text-primary prose-a:text-accent">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Markdown styling fixes for the new theme */
+  .prose img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  .prose a {
+    color: var(--color-primary);
+  }
+</style>
