@@ -21,6 +21,7 @@ import {
   Smartphone,
   Zap,
   Coins,
+  ExternalLink,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -114,11 +115,17 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="relative z-10"
         >
-          <img
-            src="/images/cute_fluffy_cat_sleeping_on_a_cloud.png"
-            alt="Sleeping zen cat on a cloud"
-            className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3 object-cover"
+            poster="/images/hero-poster.webp"
+          >
+            <source src="/videos/dance-logic.webm" type="video/webm" />
+            <source src="/videos/dance-logic.mp4" type="video/mp4" />
+          </video>
 
           {/* Floating Cards */}
           <motion.div
@@ -209,22 +216,26 @@ export interface Post {
   heroImage: string;
 }
 
-const Features = ({ posts = [] }: { posts?: Post[] }) => {
+const Features = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const hasMore = nextPostId !== '';
 
   const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev + 3 >= posts.length ? 0 : prev + 3
-    );
+    setCurrentIndex((prev) => {
+      const next = prev + 3;
+      return next >= posts.length ? prev : next;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev - 3 < 0 ? Math.max(0, posts.length - 3) : prev - 3
-    );
+    setCurrentIndex((prev) => {
+      const next = prev - 3;
+      return next < 0 ? 0 : next;
+    });
   };
 
   const visiblePosts = posts.slice(currentIndex, currentIndex + 3);
+  const isLastPage = currentIndex + 3 >= posts.length;
 
   return (
     <section
@@ -263,17 +274,28 @@ const Features = ({ posts = [] }: { posts?: Post[] }) => {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {posts.length > 0 ? (
-              visiblePosts.map((post, idx) => (
-                <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
-                  <FeatureCard
-                    title={post.title}
-                    desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
-                    img={post.heroImage || '/images/meditating_cat_illustration.png'}
-                    delay={0.1 * (idx + 1)}
-                    testId={`card-feature-${idx}`}
-                  />
-                </a>
-              ))
+              <>
+                {visiblePosts.map((post, idx) => (
+                  <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
+                    <FeatureCard
+                      title={post.title}
+                      desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
+                      img={post.heroImage || '/images/meditating_cat_illustration.png'}
+                      delay={0.1 * (idx + 1)}
+                      testId={`card-feature-${idx}`}
+                    />
+                  </a>
+                ))}
+                {isLastPage && hasMore && (
+                  <a
+                    href={`/blog/#post-${nextPostId}`}
+                    className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-md transition-all flex flex-col items-center justify-center gap-3 text-center group"
+                  >
+                    <ExternalLink className="text-primary h-8 w-8 group-hover:scale-110 transition-transform" />
+                    <span className="font-heading text-lg font-bold text-foreground">過去のセミナーをもっと見る</span>
+                  </a>
+                )}
+              </>
             ) : (
               <>
                 <FeatureCard
@@ -324,8 +346,9 @@ const Community = () => {
       name: '社交ダンスに必要な',
       role: '体幹トレーニングに特化',
       quote:
-        '美しく踊るために欠かせないインナーマッスルを効率的に鍛えます。ダンス理論に基づいたトレーニングで、軸의ブレない安定した踊りを手に入れましょう。',
+        '社交ダンスに不可欠な体幹を鍛えつつ、身体を自在に操るための神経系のアプローチと柔軟性の向上を図ります。トレーニングはダンスの動きやポスチャーと関連させながら行い、ダンスに活かせるようにします。',
       icon: <Activity className="text-primary h-8 w-8" />,
+      link: '/body-training/#社交ダンスに必要な体幹を鍛える',
     },
     {
       name: '録画も見られる',
@@ -333,6 +356,7 @@ const Community = () => {
       quote:
         '全てのレッスンは録画され、限定公開動画として何度も復習可能です。リアルタイムで参加できない日も、後から自分の好きなタイミングで練習できます.',
       icon: <PlayCircle className="text-primary h-8 w-8" />,
+      link: '/body-training/#録画も見られる-youtube限定動画',
     },
     {
       name: '25分 1,000円',
@@ -340,6 +364,7 @@ const Community = () => {
       quote:
         '少人数制のクラスなので、一人ひとりの動きをしっかりとチェック。低価格ながらも、パーソナルに近いきめ細やかなアドバイスが受けられます。',
       icon: <Coins className="text-primary h-8 w-8" />,
+      link: '/body-training/#料金',
     },
   ];
 
@@ -363,27 +388,30 @@ const Community = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -10 }}
             >
-              <div className="bg-card h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                <div className="flex h-full flex-col p-8">
-                  <div className="mb-6 flex items-center gap-4">
-                    <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full shrink-0">
-                      {person.icon}
+              <a href={person.link} className="block h-full transition-transform duration-300">
+                <div className="bg-card h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
+                  <div className="flex h-full flex-col p-8">
+                    <div className="mb-6 flex items-center gap-4">
+                      <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full shrink-0">
+                        {person.icon}
+                      </div>
+                      <div>
+                        <p className="font-heading text-foreground font-bold leading-tight">
+                          {person.name}
+                        </p>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          {person.role}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-heading text-foreground font-bold leading-tight">
-                        {person.name}
-                      </p>
-                      <p className="text-muted-foreground text-sm mt-1">
-                        {person.role}
-                      </p>
-                    </div>
+                    <p className="text-muted-foreground flex-1 leading-relaxed">
+                      {person.quote}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground flex-1 leading-relaxed">
-                    {person.quote}
-                  </p>
                 </div>
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -486,69 +514,54 @@ export const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-6"
           >
-            {/* Learn */}
+            {/* Services */}
             <div className="space-y-3">
               <div className="text-primary flex items-center gap-2">
                 <BookOpen className="h-5 w-5" />
-                <span className="font-heading text-sm font-bold">Learn</span>
+                <span className="font-heading text-sm font-bold">サービス</span>
               </div>
               <div className="flex flex-col gap-2 pl-7">
                 <a
-                  href="/guide"
-                  data-testid="link-footer-guide"
+                  href="/#features"
                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
                 >
-                  Getting Started
+                  オンライン社交ダンスセミナー
                 </a>
                 <a
-                  href="/faq"
-                  data-testid="link-footer-faq"
+                  href="/body-training/"
                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
                 >
-                  FAQ
+                  オンライン体幹トレーニング
+                </a>
+                <a
+                  href="/online-ballroomdance-lesson/"
+                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
+                >
+                  オンラインプライベートレッスン
                 </a>
               </div>
             </div>
 
-            {/* Community */}
+            {/* Contents */}
             <div className="space-y-3">
               <div className="text-primary flex items-center gap-2">
                 <Users className="h-5 w-5" />
                 <span className="font-heading text-sm font-bold">
-                  Community
+                  コンテンツ
                 </span>
               </div>
               <div className="flex flex-col gap-2 pl-7">
                 <a
-                  href="/contact"
-                  data-testid="link-footer-contact"
+                  href="/blog/"
                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
                 >
-                  Contact Us
+                  新着一覧
                 </a>
                 <a
-                  href="/about"
-                  data-testid="link-footer-about-community"
+                  href="/ken-ono/"
                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
                 >
-                  About Us
-                </a>
-              </div>
-            </div>
-
-            {/* Legal */}
-            <div className="space-y-3">
-              <div className="text-primary flex items-center gap-2">
-                <Lock className="h-5 w-5" />
-                <span className="font-heading text-sm font-bold">Legal</span>
-              </div>
-              <div className="flex flex-col gap-2 pl-7">
-                <a
-                  href="/privacy"
-                  data-testid="link-footer-privacy"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
-                  Privacy Policy
+                  講師 大埜健について
                 </a>
               </div>
             </div>
@@ -564,11 +577,10 @@ export const Footer = () => {
           >
             <div className="space-y-2">
               <h4 className="font-heading text-foreground font-bold">
-                Join Our Community
+                お問い合わせ＆セミナーへ参加
               </h4>
               <p className="text-muted-foreground text-sm">
-                Connect with thousands of zen-seekers on your mindfulness
-                journey.
+                LINE公式アカウントに登録するだけで無料でセミナーへの参加、過去動画の閲覧ができます。問い合わせは、LINEもしくは<a href="mailto:narutaku@yahoo.co.jp" className="hover:text-primary underline">メール</a>にてご連絡ください。
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
@@ -612,11 +624,11 @@ export const Footer = () => {
   );
 };
 
-export default function Home({ posts = [] }: { posts?: Post[] }) {
+export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) {
   return (
     <>
       <Hero />
-      <Features posts={posts} />
+      <Features posts={posts} nextPostId={nextPostId} totalCount={totalCount} />
       <Community />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
@@ -642,7 +654,7 @@ export default function Home({ posts = [] }: { posts?: Post[] }) {
                 title: 'プライベートレッスン',
                 description:
                   'あなたのためだけの時間。\n社交ダンスのオンラインレッスンはもちろん、デモや試合のビデオから改善点を見つける、トレーニング、練習、質問など自由にお使えます。',
-                href: '/app',
+                href: '/online-ballroomdance-lesson/#プライベートのオンラインレッスンだから',
                 testId: 'button-cta-app',
                 icon: <User className="text-primary h-8 w-8" />,
               },
@@ -651,7 +663,7 @@ export default function Home({ posts = [] }: { posts?: Post[] }) {
                 title: '悩みや弱点を集中特訓',
                 description:
                   '苦手なステップを集中的に練習するのも良し。正しいテクニックを学ぶこと、そして繰り返し練習することが大切です。先生の目がある中で、繰り返し練習できます。',
-                href: '/guide',
+                href: '/online-ballroomdance-lesson/#あなたのお悩みを解決するために',
                 testId: 'button-cta-guide',
                 icon: <Target className="text-primary h-8 w-8" />,
               },
@@ -660,38 +672,31 @@ export default function Home({ posts = [] }: { posts?: Post[] }) {
                 title: '25分 2500円',
                 description:
                   '好きな場所から参加できます。\nスマホやタブレット、PCがあればOK、移動時間の無駄をなくして、時間を有効活用できます。',
-                href: '/explore',
+                href: '/online-ballroomdance-lesson/#料金',
                 testId: 'button-cta-explore',
                 icon: <Coins className="text-primary h-8 w-8" />,
               },
             ].map((cta, idx) => (
-              <motion.div
+              <motion.a
+                href={cta.href}
                 key={cta.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 whileHover={{ y: -8 }}
-                className="bg-card flex h-full flex-col items-center gap-4 rounded-[2rem] p-8 text-center shadow-lg transition-shadow hover:shadow-xl"
+                className="bg-card flex h-full flex-col items-center gap-4 rounded-[2rem] p-8 text-center shadow-lg transition-shadow hover:shadow-xl cursor-pointer group"
               >
-                <div className="bg-primary/15 flex h-16 w-16 items-center justify-center rounded-full">
+                <div className="bg-primary/15 flex h-16 w-16 items-center justify-center rounded-full group-hover:scale-110 transition-transform">
                   {cta.icon}
                 </div>
-                <h3 className="font-heading text-foreground text-2xl font-bold">
+                <h3 className="font-heading text-foreground text-2xl font-bold group-hover:text-primary transition-colors">
                   {cta.title}
                 </h3>
                 <p className="text-muted-foreground flex-1 whitespace-pre-line">
                   {cta.description}
                 </p>
-                <a href={cta.href}>
-                  <button
-                    data-testid={cta.testId}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer rounded-full px-6 py-2 text-sm font-bold shadow-md transition-colors"
-                  >
-                    Get Started
-                  </button>
-                </a>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
 

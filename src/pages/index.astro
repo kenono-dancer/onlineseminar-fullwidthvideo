@@ -3,19 +3,24 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import HomePage from '../components/HomePage';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const allSeminarPosts = (await getCollection('blog', ({ data }) => !data.draft && data.categories.includes('online-lesson')))
   .sort((a, b) => {
     const dateA = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
     const dateB = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
     return dateB - dateA;
-  })
-  .slice(0, 12)
+  });
+
+const posts = allSeminarPosts
+  .slice(0, 100)
   .map(post => ({
     id: post.id,
     title: post.data.title,
     description: post.data.description || '',
     heroImage: post.data.heroImage || '/images/meditating_cat_illustration.png',
   }));
+
+const nextPostId = allSeminarPosts.length > 100 ? allSeminarPosts[100].id : '';
+const totalSeminarCount = allSeminarPosts.length;
 ---
 
 <Layout
@@ -23,5 +28,5 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   description="Find your zen with cat-inspired meditation. Guided breathing exercises, mindfulness sessions, and feline wisdom to help you relax. One breath, one paw print at a time."
   canonicalPath="/"
 >
-  <HomePage posts={posts} client:load />
+  <HomePage posts={posts} nextPostId={nextPostId} totalCount={totalSeminarCount} client:load />
 </Layout>
