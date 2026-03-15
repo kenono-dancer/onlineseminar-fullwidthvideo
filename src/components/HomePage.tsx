@@ -10,159 +10,333 @@ import {
   Star,
   Lock,
   CheckCircle,
+  Search,
+  ExternalLink,
+  MoveRight,
   ChevronLeft,
   ChevronRight,
-  Dumbbell,
-  Video,
   Activity,
   PlayCircle,
   User,
   Target,
-  Smartphone,
-  Zap,
   Coins,
-  ExternalLink,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 
 
-const Hero = () => {
+const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const hasMore = nextPostId !== '';
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => {
+      const next = prev + 3;
+      return next >= posts.length ? prev : next;
+    });
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => {
+      const next = prev - 3;
+      return next < 0 ? 0 : next;
+    });
+  };
+
+  const visiblePosts = posts.slice(currentIndex, currentIndex + 3);
+  const isLastPage = currentIndex + 3 >= posts.length;
+
   return (
     <section
       id="home"
-      className="relative flex min-h-[90vh] flex-col items-center overflow-hidden px-6 py-12 md:flex-row md:px-12 lg:px-24"
+      className="relative flex min-h-[90vh] flex-col items-center overflow-hidden px-6 py-12 md:px-12 lg:px-24"
     >
       {/* Decorative Blobs */}
       <div className="bg-primary/10 absolute top-[-10%] left-[-10%] -z-10 h-[500px] w-[500px] rounded-full blur-3xl" />
       <div className="bg-accent/30 absolute right-[-5%] bottom-[10%] -z-10 h-[400px] w-[400px] rounded-full blur-3xl" />
 
-      <div className="relative z-10 w-full space-y-8 md:w-1/2">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
-            自宅から参加できる
-          </span>
-          <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-6xl">
-            「なんとなく」のダンスから
-            <br />
-            <span className="text-primary relative inline-block">
-              卒業しませんか？
-              <svg
-                className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0 5 Q 50 10 100 5"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="none"
-                />
-              </svg>
+      {/* Centered Heading */}
+      <motion.div
+        className="relative z-20 mb-16 space-y-4 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="font-hand text-primary text-xl md:text-2xl">
+          誰でも無料で参加できる
+        </span>
+        <h2 className="font-heading text-foreground text-4xl font-bold md:text-6xl">
+          オンライン社交ダンスセミナー
+        </h2>
+      </motion.div>
+
+      <div className="relative z-10 flex w-full flex-col items-center md:flex-row md:gap-12 mb-24">
+        <div className="w-full space-y-8 md:w-1/2">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
+              自宅から参加できる
             </span>
-          </h1>
-          <p className="text-muted-foreground max-w-md text-base leading-relaxed md:text-lg">
-            社交ダンスを、もっと深く、正しく、美しく。<br />
-            運動学と機能解剖学という「地図」を持てば、上達への迷いはなくなります。<br />
-            社交ダンスの理論が求める理想のポスチャーや動きを、骨格レベルから再構築しましょう。<br />
-            <span className="text-primary font-bold">一緒に学び練習し、身につけましょう。</span>
-          </p>
+            <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-6xl">
+              「なんとなく」のダンスから
+              <br />
+              <span className="text-primary relative inline-block">
+                卒業しませんか？
+                <svg
+                  className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h1>
+            <p className="text-muted-foreground max-w-md text-base leading-relaxed md:text-lg">
+              社交ダンスを、もっと深く、正しく、美しく。<br />
+              運動学と機能解剖学という「地図」を持てば、上達への迷いはなくなります。<br />
+              社交ダンスの理論が求める理想のポスチャーや動きを、骨格レベルから再構築しましょう。<br />
+              <span className="text-primary font-bold">一緒に学び練習し、身につけましょう。</span>
+            </p>
 
-          {/* Trust Badges */}
+            {/* Trust Badges */}
+            <motion.div
+              className="flex flex-wrap gap-4 pt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              {[
+                { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-600' },
+                { icon: Lock, label: '【セミナーは無料】', color: 'text-green-600' },
+                {
+                  icon: CheckCircle,
+                  label: '【機能解剖学】',
+                  color: 'text-purple-600',
+                },
+                { icon: Heart, label: '【500回以上継続】', color: 'text-red-600' },
+              ].map((badge, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + idx * 0.1 }}
+                  className="bg-secondary/30 border-border/40 flex items-center justify-center gap-2 rounded-full border px-3 py-2"
+                >
+                  <badge.icon
+                    className={`h-4 w-4 flex-shrink-0 ${badge.color}`}
+                  />
+                  <span className="text-foreground text-xs font-semibold">
+                    {badge.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <div className="relative mt-12 w-full md:mt-0 md:w-1/2">
           <motion.div
-            className="flex flex-wrap gap-4 pt-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            className="relative z-10"
           >
-            {[
-              { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-600' },
-              { icon: Lock, label: '【セミナーは無料】', color: 'text-green-600' },
-              {
-                icon: CheckCircle,
-                label: '【機能解剖学】',
-                color: 'text-purple-600',
-              },
-              { icon: Heart, label: '【500回以上継続】', color: 'text-red-600' },
-            ].map((badge, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + idx * 0.1 }}
-                className="bg-secondary/30 border-border/40 flex items-center justify-center gap-2 rounded-full border px-3 py-2"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3 object-cover"
+              poster="/images/hero-poster.webp"
+            >
+              <source src="/videos/dance-logic.webm" type="video/webm" />
+              <source src="/videos/dance-logic.mp4" type="video/mp4" />
+            </video>
+
+            {/* Floating Cards */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="bg-card absolute -bottom-8 -left-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:left-10"
+            >
+              <div className="rounded-full bg-green-100 p-2 text-green-600">
+                <Sparkles size={20} />
+              </div>
+              <div>
+                <p className="text-sm font-bold">無料で参加</p>
+                <p className="text-muted-foreground text-[10px]">社交ダンスセミナー</p>
+              </div>
+            </motion.div>
+
+            {/* Second Badge */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 4,
+                ease: 'easeInOut',
+                delay: 0.5,
+              }}
+              className="bg-card absolute -top-4 -right-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:-right-8"
+            >
+              <div className="rounded-full bg-blue-100 p-2 text-blue-600">
+                <Users size={20} />
+              </div>
+              <div>
+                <p className="text-sm font-bold">500回以上開催</p>
+                <p className="text-muted-foreground text-xs">since 2018</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Seminar Slider integrated into Hero */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 mt-12 pb-12">
+        <div className="relative">
+          {posts.length > 3 && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute left-[-20px] md:left-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-20"
+                aria-label="Previous posts"
               >
-                <badge.icon
-                  className={`h-4 w-4 flex-shrink-0 ${badge.color}`}
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-[-20px] md:right-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-20"
+                aria-label="Next posts"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </>
+          )}
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {posts.length > 0 ? (
+              <>
+                {visiblePosts.map((post, idx) => (
+                  <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
+                    <FeatureCard
+                      title={post.title}
+                      desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
+                      img={post.heroImage || '/images/meditating_cat_illustration.png'}
+                      delay={0.1 * (idx + 1)}
+                      testId={`card-feature-${idx}`}
+                    />
+                  </a>
+                ))}
+                {isLastPage && hasMore && (
+                  <a
+                    href={`/blog/#post-${nextPostId}`}
+                    className="bg-card rounded-[2rem] p-8 shadow-sm border border-border hover:shadow-md transition-all flex flex-col items-center justify-center gap-3 text-center group"
+                  >
+                    <ExternalLink className="text-primary h-8 w-8 group-hover:scale-110 transition-transform" />
+                    <span className="font-heading text-lg font-bold text-foreground">過去のセミナーをもっと見る</span>
+                  </a>
+                )}
+              </>
+            ) : (
+              // Fallback cards
+              <>
+                <FeatureCard
+                  title="Master of Chill"
+                  desc="Learn the ancient art of doing absolutely nothing and looking fabulous while doing it."
+                  img="/images/meditating_cat_illustration.png"
+                  delay={0.1}
+                  testId="card-feature-chill"
                 />
-                <span className="text-foreground text-xs font-semibold">
-                  {badge.label}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+                <FeatureCard
+                  title="Playful Spirit"
+                  desc="Rediscover your inner kitten. Chase dreams (and butterflies) with reckless abandon."
+                  img="/images/playful_cat_illustration.png"
+                  delay={0.2}
+                  testId="card-feature-playful"
+                />
+                <FeatureCard
+                  title="Soul Nourishment"
+                  desc="Feed your heart with unconditional love, head bumps, and the occasional slow blink."
+                  img="/images/cat_with_food_illustration.png"
+                  delay={0.3}
+                  testId="card-feature-nourishment"
+                />
+              </>
+            )}
+          </div>
+        </div>
+
+        {posts.length > 0 && (
+          <div className="mt-8 flex justify-end">
+            <a
+              href="/blog"
+              className="font-heading text-primary hover:text-primary/80 font-bold flex items-center gap-1 transition-colors group"
+            >
+              一覧へ
+              <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        )}
       </div>
 
-      <div className="relative mt-12 w-full md:mt-0 md:w-1/2">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative z-10"
-        >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3 object-cover"
-            poster="/images/hero-poster.webp"
-          >
-            <source src="/videos/dance-logic.webm" type="video/webm" />
-            <source src="/videos/dance-logic.mp4" type="video/mp4" />
-          </video>
+      {/* BEGIN: Seminar CTA Section */}
+      <motion.section 
+        className="relative z-10 w-full max-w-5xl mx-auto mt-16" 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        id="cta-section"
+      >
+        {/* Main White Card */}
+        <div className="bg-white rounded-[40px] shadow-2xl shadow-primary/5 p-8 md:p-12 border border-border/50 flex flex-col items-center text-center">
+          {/* Icons Row */}
+          <div className="flex items-center gap-6 mb-10">
+            {/* Zoom Icon */}
+            <div className="flex items-center gap-2">
+              <img src="/images/zoom-logo.jpg" alt="Zoom" className="h-8 w-auto object-contain" />
+            </div>
+            <div className="h-8 w-[1px] bg-border"></div>
+            {/* YouTube Icon */}
+            <div className="flex items-center gap-2">
+              <img src="/images/youtube-logo.jpg" alt="YouTube" className="h-8 w-auto object-contain" />
+            </div>
+          </div>
 
-          {/* Floating Cards */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-            className="bg-card absolute -bottom-8 -left-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:left-10"
-          >
-            <div className="rounded-full bg-green-100 p-2 text-green-600">
-              <Sparkles size={20} />
-            </div>
-            <div>
-              <p className="text-sm font-bold">無料で参加</p>
-              <p className="text-muted-foreground text-[10px]">社交ダンスセミナー</p>
-            </div>
-          </motion.div>
+          {/* Text Content */}
+          <div className="mb-10 max-w-2xl">
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6 font-heading tracking-tight leading-tight">
+              オンライン社交ダンスセミナー
+            </h2>
+            <p className="text-muted-foreground text-base md:text-xl leading-relaxed">
+              <span className="font-bold text-[#06C755]">【無料】</span>LINE登録で、セミナー開始直前にZoom IDをお届けします。<br className="hidden md:block"/>
+              過去のアーカイブ動画（YouTube）もすべて視聴可能です。
+            </p>
+          </div>
 
-          {/* Second Badge */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 4,
-              ease: 'easeInOut',
-              delay: 0.5,
-            }}
-            className="bg-card absolute -top-4 -right-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:-right-8"
-          >
-            <div className="rounded-full bg-blue-100 p-2 text-blue-600">
-              <Users size={20} />
-            </div>
-            <div>
-              <p className="text-sm font-bold">500回以上開催</p>
-              <p className="text-muted-foreground text-xs">since 2018</p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
+          {/* CTA Button */}
+          <div className="w-full max-w-md">
+            <a 
+              className="bg-[#06C755] hover:bg-[#05b14c] transition-all duration-300 rounded-full py-5 px-8 flex items-center justify-between group shadow-xl shadow-green-500/20 hover:scale-[1.02]" 
+              href="https://lin.ee/yvAruxS!"
+            >
+              <span className="flex-grow text-center text-white font-bold text-lg md:text-2xl ml-6 font-heading">
+                LINE登録して無料で参加する
+              </span>
+              <ChevronRight className="w-6 h-6 text-white transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+      </motion.section>
+      {/* END: Seminar CTA Section */}
     </section>
   );
 };
@@ -216,129 +390,6 @@ export interface Post {
   heroImage: string;
 }
 
-const Features = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const hasMore = nextPostId !== '';
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => {
-      const next = prev + 3;
-      return next >= posts.length ? prev : next;
-    });
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => {
-      const next = prev - 3;
-      return next < 0 ? 0 : next;
-    });
-  };
-
-  const visiblePosts = posts.slice(currentIndex, currentIndex + 3);
-  const isLastPage = currentIndex + 3 >= posts.length;
-
-  return (
-    <section
-      id="features"
-      className="relative bg-white/50 px-6 py-24 md:px-12 lg:px-24"
-    >
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-16 space-y-4 text-center">
-          <span className="font-hand text-primary text-xl">
-            誰でも無料で参加できる
-          </span>
-          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            オンライン社交ダンスセミナー
-          </h2>
-        </div>
-
-        <div className="relative">
-          {posts.length > 3 && (
-            <>
-              <button
-                onClick={prevSlide}
-                className="absolute left-[-20px] md:left-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-10"
-                aria-label="Previous posts"
-              >
-                <ChevronLeft size={24} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-[-20px] md:right-[-50px] top-1/2 -translate-y-1/2 bg-card text-primary hover:bg-primary hover:text-white p-2 md:p-3 rounded-full shadow-md transition-colors z-10"
-                aria-label="Next posts"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </>
-          )}
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {posts.length > 0 ? (
-              <>
-                {visiblePosts.map((post, idx) => (
-                  <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
-                    <FeatureCard
-                      title={post.title}
-                      desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
-                      img={post.heroImage || '/images/meditating_cat_illustration.png'}
-                      delay={0.1 * (idx + 1)}
-                      testId={`card-feature-${idx}`}
-                    />
-                  </a>
-                ))}
-                {isLastPage && hasMore && (
-                  <a
-                    href={`/blog/#post-${nextPostId}`}
-                    className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-md transition-all flex flex-col items-center justify-center gap-3 text-center group"
-                  >
-                    <ExternalLink className="text-primary h-8 w-8 group-hover:scale-110 transition-transform" />
-                    <span className="font-heading text-lg font-bold text-foreground">過去のセミナーをもっと見る</span>
-                  </a>
-                )}
-              </>
-            ) : (
-              <>
-                <FeatureCard
-                  title="Master of Chill"
-                  desc="Learn the ancient art of doing absolutely nothing and looking fabulous while doing it."
-                  img="/images/meditating_cat_illustration.png"
-                  delay={0.1}
-                  testId="card-feature-chill"
-                />
-                <FeatureCard
-                  title="Playful Spirit"
-                  desc="Rediscover your inner kitten. Chase dreams (and butterflies) with reckless abandon."
-                  img="/images/playful_cat_illustration.png"
-                  delay={0.2}
-                  testId="card-feature-playful"
-                />
-                <FeatureCard
-                  title="Soul Nourishment"
-                  desc="Feed your heart with unconditional love, head bumps, and the occasional slow blink."
-                  img="/images/cat_with_food_illustration.png"
-                  delay={0.3}
-                  testId="card-feature-nourishment"
-                />
-              </>
-            )}
-          </div>
-        </div>
-
-        {posts.length > 0 && (
-          <div className="mt-8 flex justify-end">
-            <a
-              href="/blog"
-              className="font-heading text-primary hover:text-primary/80 font-bold flex items-center gap-1 transition-colors group"
-            >
-              一覧へ
-              <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-};
 
 const Community = () => {
   const testimonials = [
@@ -369,7 +420,7 @@ const Community = () => {
   ];
 
   return (
-    <section id="community" className="relative px-6 py-24 md:px-12 lg:px-24">
+    <section id="community" className="relative px-6 py-24 md:px-12 lg:px-24 bg-slate-50/80">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
@@ -627,10 +678,9 @@ export const Footer = () => {
 export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) {
   return (
     <>
-      <Hero />
-      <Features posts={posts} nextPostId={nextPostId} totalCount={totalCount} />
+      <Hero posts={posts} nextPostId={nextPostId} totalCount={totalCount} />
       <Community />
-      <section id="cta" className="px-6 py-24">
+      <section id="cta" className="px-6 py-24 bg-white relative">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
