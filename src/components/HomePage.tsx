@@ -20,6 +20,12 @@ import {
   User,
   Target,
   Coins,
+  Lightbulb,
+  MessageCircle,
+  Gift,
+  HelpCircle,
+  Monitor,
+  Trophy,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -77,33 +83,24 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
-              自宅から参加できる
+            <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl xl:text-3xl">
+              その一歩に、確かな「理由」を。
             </span>
-            <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-6xl">
-              「なんとなく」のダンスから
+            <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight">
+              なんとなくの感覚で踊る日々から、
               <br />
-              <span className="text-primary relative inline-block">
+              <span className="text-primary mt-2 block">
                 卒業しませんか？
-                <svg
-                  className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
-                  viewBox="0 0 100 10"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 5 Q 50 10 100 5"
-                    stroke="currentColor"
-                    strokeWidth="8"
-                    fill="none"
-                  />
-                </svg>
               </span>
             </h1>
-            <p className="text-muted-foreground max-w-md text-base leading-relaxed md:text-lg">
-              社交ダンスを、もっと深く、正しく、美しく。<br />
-              運動学と機能解剖学という「地図」を持てば、上達への迷いはなくなります。<br />
-              社交ダンスの理論が求める理想のポスチャーや動きを、骨格レベルから再構築しましょう。<br />
-              <span className="text-primary font-bold">一緒に学び練習し、身につけましょう。</span>
+            <p className="text-muted-foreground w-full max-w-lg text-base leading-relaxed md:text-lg">
+              社交ダンスが本来持つ「テクニック・理論」を正しく理解する。<br />
+              <br />
+              その理論を体現するために、運動学や機能解剖学に基づいた<br />
+              合理的な身体の使い方を付け加える。<br />
+              <br />
+              <span className="text-primary font-bold">根拠があるから、迷わない。</span><br />
+              自宅でじっくり、あなたのダンスを「構造」から変えていきましょう。
             </p>
 
             {/* Trust Badges */}
@@ -287,6 +284,125 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
         )}
       </div>
 
+      {/* BEGIN: Why Free & What You Gain Section */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto mt-24 px-4 space-y-20">
+
+        {/* Section 1: 無料で提供する理由 */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="mb-12 space-y-4 text-center">
+            <span className="font-hand text-primary text-xl">
+              なぜ無料なのか
+            </span>
+            <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl leading-tight">
+              オンライン社交ダンスセミナーを<br className="hidden md:block" />無料で提供する理由
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              {
+                icon: <Lightbulb className="text-primary h-7 w-7" />,
+                title: '「感覚」を「理論」へ。\n納得の上達を。',
+                body: '社交ダンスは感覚的な教えが多く、複数の要素が絡み合い迷いが生じがちです。体系立てた理論を共有することで、誰もが迷わず上達できる環境を目指しています。',
+              },
+              {
+                icon: <MessageCircle className="text-primary h-7 w-7" />,
+                title: '効率的な\n「学びの使い分け」の提案',
+                body: '教室や練習場は思い切り動く場、オンラインは集中して知識を深め、部分練習をする場。正しく理解して繰り返し練習することが、理想のダンスへの最短距離だと信じています。',
+              },
+              {
+                icon: <Gift className="text-primary h-7 w-7" />,
+                title: '私なりの、\nダンス界への恩返し。',
+                body: '私自身、中途半端に色々な理論をかじり遠回りし、苦労した経験があります。かつての自分と同じ悩みを持つ方の力になりたい。無料、そして参加しやすいオンラインで門戸を広げ、業界を盛り上げることが私の願いです。',
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-card rounded-[2rem] p-8 shadow-lg hover:shadow-xl transition-all h-full flex flex-col"
+              >
+                <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full mb-5 shrink-0">
+                  {item.icon}
+                </div>
+                <h3 className="font-heading text-foreground text-lg font-bold mb-3 whitespace-pre-line leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed flex-1">
+                  {item.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Section 2: セミナーで得られること */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="mb-12 space-y-4 text-center">
+            <span className="font-hand text-primary text-xl">
+              参加するメリット
+            </span>
+            <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
+              セミナーで得られること
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              {
+                icon: <HelpCircle className="text-primary h-7 w-7" />,
+                title: 'テクニックの「なぜ？」が解ける',
+                body: 'ステップやホールドの形。その「理由」を身体の仕組みから理解できます。',
+              },
+              {
+                icon: <Monitor className="text-primary h-7 w-7" />,
+                title: 'オンラインだからこそ「見える」細部',
+                body: '対面では聞き逃しがちな理論も、自宅なら集中して吸収・反復できます。カメラは前後ろ上と３方向にあり、録画もあります。自身のカメラをオンにすれば自分の映像と見比べることも可能です。',
+              },
+              {
+                icon: <Trophy className="text-primary h-7 w-7" />,
+                title: '「できる」自信を持ってフロアへ',
+                body: '知識と部分練習を蓄えることで、次にフロアへ行くときの踊りが見違えます。',
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-card rounded-[2rem] p-8 shadow-lg hover:shadow-xl transition-all h-full flex flex-col"
+              >
+                <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full mb-5 shrink-0">
+                  {item.icon}
+                </div>
+                <h3 className="font-heading text-foreground text-lg font-bold mb-3 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed flex-1">
+                  {item.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+      {/* END: Why Free & What You Gain Section */}
+
       {/* BEGIN: Seminar CTA Section */}
       <motion.section 
         className="relative z-10 w-full max-w-5xl mx-auto mt-16" 
@@ -362,22 +478,18 @@ const FeatureCard = ({
     whileHover={{ y: -10 }}
     data-testid={testId}
   >
-    <div className="bg-card h-full overflow-hidden rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
-      <div className="flex h-full flex-col p-0">
-        <div className="bg-secondary/30 flex h-48 items-center justify-center p-8">
-          <motion.img
-            src={img}
-            alt={title}
-            className="h-32 w-auto object-contain drop-shadow-md"
-            whileHover={{ scale: 1.1 }}
-          />
-        </div>
-        <div className="flex flex-1 flex-col items-center p-8 text-center">
-          <h3 className="font-heading text-foreground mb-3 text-2xl font-bold">
-            {title}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">{desc}</p>
-        </div>
+    <div className="bg-card h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
+      <div className="flex h-full flex-col items-center p-8 text-center">
+        <motion.img
+          src={img}
+          alt={title}
+          className="mb-8 h-48 w-auto object-contain drop-shadow-md"
+          whileHover={{ scale: 1.05 }}
+        />
+        <h3 className="font-heading text-foreground mb-3 text-2xl font-bold">
+          {title}
+        </h3>
+        <p className="text-muted-foreground flex-1 leading-relaxed">{desc}</p>
       </div>
     </div>
   </motion.div>
