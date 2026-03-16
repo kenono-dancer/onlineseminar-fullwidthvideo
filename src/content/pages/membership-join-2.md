@@ -19,9 +19,7 @@ If you delete any of the essential pages required by the plugin, [this documenta
 You get unlimited access to free membership content   
 _**Price: Free!**_   
   
-Link the following image to go to the Registration Page if you want your visitors to be able to create a free membership account  
-  
-![Join Now Button](/assets/images/wp/join-now-button-image.gif)
+
 
 **You can register for a Free Membership or pay for one of the following membership options**
 

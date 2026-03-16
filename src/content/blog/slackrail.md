@@ -32,7 +32,7 @@ https://youtu.be/QsSs4gtqU4Y
 
 重さは、スラックレール1つ200gと凄く軽いです。 見た目はゴムのように見えますが、どちらかというとスポンジに近い重さ。 踏んでみた感触は、スポンジのように完全に潰れてしまうことはなく、絶妙な硬さです。
 
-[![](/assets/images/C2C125D1-E1F2-4D91-B68D-DD20DB068946-e1581680870557-225x300_3.jpeg)](<https://itxdancer.com/slackrail/c2c125d1-e1f2-4d91-b68d-dd20db068946/>) [![](/assets/images/wp/55FDA923-placeholder.jpeg)](<https://itxdancer.com/slackrail/55fda923-75c2-44cc-abdc-2eeb97774b9b/>)
+[![](/assets/images/C2C125D1-E1F2-4D91-B68D-DD20DB068946-e1581680870557-225x300_3.jpeg)](<https://itxdancer.com/slackrail/c2c125d1-e1f2-4d91-b68d-dd20db068946/>)
 
  
 
