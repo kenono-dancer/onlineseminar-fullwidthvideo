@@ -39,7 +39,7 @@ menuOrder: 0
 
 ## 会場の写真
 
-![](/assets/images/967B42EB-7248-4365-AA74-EB456E00265D-225x300_3.jpeg) ![](https://itxdancer.com/wp-content/uploads/2018/12/DB505F73-65AF-446C-93DB-6C42F729080B-300x225.jpeg)  
+![](/assets/images/967B42EB-7248-4365-AA74-EB456E00265D-225x300_3.jpeg) ![](/assets/images/DB505F73-65AF-446C-93DB-6C42F729080B-e1642985648740_3.jpeg)  
 
 ## 会場所在地 地図
 

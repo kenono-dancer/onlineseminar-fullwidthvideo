@@ -18,33 +18,33 @@ wpSlug: "dance_lesson_in_english_beginning"
 
 ### 本当のレッスンの始めや、朝教室に入るとき
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/b-man.png)
+![](/assets/images/wp/b-man.png)
 
 Good Morning! とか、Helloとか、 
 
  
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/woman.png)
+![](/assets/images/wp/woman.png)
 
 Good Morning.とか、 Helloとか、 
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/man.png)
+![](/assets/images/wp/man.png)
 
 How are you! 
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/woman.png)
+![](/assets/images/wp/woman.png)
 
 Fine.Thank you 
 
 初対面であれば、 
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/man.png)
+![](/assets/images/wp/man.png)
 
 Nice to meet you! 
 
    
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/woman.png)
+![](/assets/images/wp/woman.png)
 
 Nice to meet you too. I'm glad to see you.   My name is Ken Ono.とか、 This is Ken Ono.と。 僕の場合は、 Call me Kenと言ったりします。 
 
@@ -52,11 +52,11 @@ Nice to meet you too. I'm glad to see you.   My name is Ken Ono.とか、 This 
 
 ### いよいよ レッスンが始まるとき、何をする？どの種目？ 疑問は？
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/man.png)
+![](/assets/images/wp/man.png)
 
 So.What we do?（何する？）とか Which dance?（どの種目？） What is your subjects?（課題は？） 
 
-![](https://itxdancer.com/wp-content/themes/cocoon-master/images/doctress.png)
+![](/assets/images/wp/doctress.png)
 
 I want dance more elastic & smoose. これ↑前回の私のテーマでした。 I think we need more relationship,connection of our body. とか、 We have problem about posture.とか I want to learn about Basic step of waltz.とか。 
 

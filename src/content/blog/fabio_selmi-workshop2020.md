@@ -40,4 +40,4 @@ wpSlug: "fabio_selmi-workshop2020"
 
 ## チラシ ご自由にお使い下さい。
 
-[![](https://itxdancer.com/wp-content/uploads/2020/01/FABIO_SELMI2020-212x300.png)](<https://itxdancer.com/fabio_selmi-workshop2020/fabio_selmi2020/>)
+[![](/assets/images/FABIO_SELMI2020-e1580463515663_3.png)](<https://itxdancer.com/fabio_selmi-workshop2020/fabio_selmi2020/>)

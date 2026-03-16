@@ -20,4 +20,4 @@ wpSlug: "alenika2021april"
 
 ## 観覧チケット、発売開始！
 
-チケットは、参加人数分の購入をお願いします。（接続台数ではありません）   [asp_product id="2204"]   [![](https://itxdancer.com/wp-content/uploads/2020/12/Stripe-jp-644x244.jpg)](</assets/images/Stripe-jp-e1607967755357_3.jpg>) Stripe社は、大手企業も利用する米資本の決済会社です。 詳細はStripe社Webサイトをご覧ください。 [https://stripe.com/](<https://stripe.com/jp>)     本サイトは、<https://itxdancer.com>内にあり、大埜健が管理しています。
+チケットは、参加人数分の購入をお願いします。（接続台数ではありません）   [asp_product id="2204"]   [![](/assets/images/Stripe-jp-e1607967755357_3.jpg)](</assets/images/Stripe-jp-e1607967755357_3.jpg>) Stripe社は、大手企業も利用する米資本の決済会社です。 詳細はStripe社Webサイトをご覧ください。 [https://stripe.com/](<https://stripe.com/jp>)     本サイトは、<https://itxdancer.com>内にあり、大埜健が管理しています。

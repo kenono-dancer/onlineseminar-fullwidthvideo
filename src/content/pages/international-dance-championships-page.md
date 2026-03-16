@@ -39,7 +39,7 @@ https://itxdancer.com/video/category/competition/london-international/ ※社交
 
 ### 会場の様子
 
-![](https://itxdancer.com/wp-content/uploads/2019/03/IMG_9561-300x225.jpg) ロイアルアルバートホールの外観  
+![](/assets/images/IMG_9561-e1570761500527_3.jpg) ロイアルアルバートホールの外観  
 ロンドンインターの本戦会場です。 ![](/assets/images/スクリーンショット-2019-03-09-2.30.36-300x157_3.png) 楕円形のフロアが特徴的 ![](/assets/images/IMG_9629-300x225_3.jpg) マウリツィオ引退のセレモニー  
 ロンドンインター 2016/10/14 ![](/assets/images/IMG_9606-300x225_3.jpg) ロンドンインターの会場 ロイアルアルバートホール内の、バンド、司会席の様子。 
 

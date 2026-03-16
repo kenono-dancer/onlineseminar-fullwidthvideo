@@ -21,7 +21,7 @@ _**Price: Free!**_
   
 Link the following image to go to the Registration Page if you want your visitors to be able to create a free membership account  
   
-![Join Now Button](https://itxdancer.com/wp-content/plugins/simple-membership/images/join-now-button-image.gif)
+![Join Now Button](/assets/images/wp/join-now-button-image.gif)
 
 **You can register for a Free Membership or pay for one of the following membership options**
 
