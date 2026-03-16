@@ -83,6 +83,24 @@ const serializedPosts = posts.map((post) => ({
         </div>
       </div>
 
+      <!-- Category Filter -->
+      <div>
+        <h3 class="font-heading text-sm font-bold text-primary mb-3 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          カテゴリー
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {Object.entries(categoryMap).map(([id, label]) => (
+            <a
+              href={`/category/${id}/`}
+              class="px-3 py-1.5 rounded-full text-xs font-semibold border border-border bg-card text-muted-foreground transition-all hover:border-primary hover:text-primary"
+            >
+              {label as string}
+            </a>
+          ))}
+        </div>
+      </div>
+
       <!-- Tag Filter -->
       <div>
         <h3 class="font-heading text-sm font-bold text-primary mb-3 flex items-center gap-2">
@@ -142,9 +160,9 @@ const serializedPosts = posts.map((post) => ({
               {post.data.categories && post.data.categories.length > 0 && (
                 <div class="flex gap-2">
                   {post.data.categories.map((cat: string) => (
-                    <span class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs">
+                    <a href={`/category/${cat}/`} class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
                       {catMap.get(cat) ?? cat}
-                    </span>
+                    </a>
                   ))}
                 </div>
               )}

@@ -43,9 +43,9 @@ const catMap = new Map((Object.entries(categoryMap) as unknown) as [string, stri
           {post.data.categories && post.data.categories.length > 0 && (
              <div class="flex gap-2">
                {post.data.categories.map((cat: string) => (
-                 <span class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs">
+                 <a href={`/category/${cat}/`} class="bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
                    {catMap.get(cat) ?? cat}
-                 </span>
+                 </a>
                ))}
              </div>
           )}

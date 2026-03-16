@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import tagMap from '../../data/tagMap.json';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  
+  // Get all unique tags from all posts
+  const allTags = new Set<string>();
+  posts.forEach(post => {
+    post.data.tags?.forEach((tag: string) => allTags.add(tag));
+  });
+
+  return Array.from(allTags).map((tagId) => {
+    const tagPosts = posts.filter((post) =>
+      post.data.tags?.includes(tagId)
+    );
+    return {
+      params: { id: tagId },
+      props: { 
+        tagPosts, 
+        tagName: (tagMap as any)[tagId] || tagId 
+      },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { tagPosts, tagName } = Astro.props;
+
+// Sort posts by date
+const sortedPosts = [...tagPosts].sort((a, b) => {
+  const dateA = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
+  const dateB = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
+  return dateB - dateA;
+});
+---
+
+<Layout title={`タグ: ${tagName} 一覧 - オンライン社交ダンスセミナー`} description={`${tagName}タグの付いた記事一覧です。`}>
+  <main class="container mx-auto px-4 py-16 mt-16 max-w-5xl">
+    <div class="mb-12">
+      <nav class="flex mb-8 text-sm text-muted-foreground">
+        <a href="/" class="hover:text-primary transition-colors">ホーム</a>
+        <span class="mx-2">/</span>
+        <a href="/blog/" class="hover:text-primary transition-colors">新着一覧</a>
+        <span class="mx-2">/</span>
+        <span class="text-foreground font-medium">タグ: {tagName}</span>
+      </nav>
+      
+      <div class="flex items-center gap-4 mb-4">
+        <div class="bg-primary/10 p-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+        </div>
+        <div>
+          <h1 class="text-4xl lg:text-5xl font-heading text-primary">タグ: {tagName}</h1>
+          <p class="text-muted-foreground mt-1">{sortedPosts.length} 件の記事</p>
+        </div>
+      </div>
+      <div class="h-1 w-20 bg-primary/20 rounded-full"></div>
+    </div>
+
+    {sortedPosts.length > 0 ? (
+      <div class="grid gap-8">
+        {sortedPosts.map((post) => (
+          <article class="bg-card rounded-2xl p-6 shadow-sm border border-border flex flex-col sm:flex-row gap-6 hover:shadow-md transition-shadow group">
+            {post.data.heroImage && (
+              <a href={`/blog/${post.id}`} class="block shrink-0 overflow-hidden rounded-xl">
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                  width="240"
+                  height="135"
+                  loading="lazy"
+                  class="w-full sm:w-[240px] h-[135px] object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+            )}
+            <div class="flex-1 flex flex-col justify-center">
+              <h2 class="text-2xl mb-2 font-heading group-hover:text-primary transition-colors">
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              </h2>
+              <div class="flex items-center gap-3 text-sm text-muted-foreground mb-4 font-medium">
+                {post.data.pubDate && (
+                  <time datetime={post.data.pubDate.toISOString()} class="flex items-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    {post.data.pubDate.toLocaleDateString('ja-JP')}
+                  </time>
+                )}
+              </div>
+              {post.data.description && (
+                <a href={`/blog/${post.id}`} class="block">
+                  <p class="text-foreground/70 line-clamp-2 text-sm md:text-base leading-relaxed">{post.data.description}</p>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-20 bg-card rounded-3xl border border-dashed border-border">
+        <p class="text-muted-foreground text-lg">このタグにはまだ投稿がありません。</p>
+        <a href="/blog/" class="mt-4 inline-block text-primary font-bold hover:underline">新着一覧に戻る</a>
+      </div>
+    )}
+  </main>
+</Layout>

@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import categoryMap from '../data/categoryMap.json';
+import tagMap from '../data/tagMap.json';
+
+// Static pages from src/pages/ (manually listed for simplicity and design control)
+const staticPages = [
+  { url: '/', label: 'ホーム' },
+  { url: '/blog/', label: '新着一覧 (ブログ)' },
+  { url: '/about/', label: 'サイトについて' },
+  { url: '/contact/', label: 'お問い合わせ' },
+  { url: '/privacy/', label: 'プライバシーポリシー' },
+  { url: '/ken-ono/', label: '講師 大埜健プロフィール' },
+];
+
+// Dynamic pages from content collections
+const contentPages = await getCollection('pages', ({ data }) => !data.draft);
+const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+// Categories
+const categories = Object.entries(categoryMap).map(([id, label]) => ({
+  url: `/category/${id}/`,
+  label: label as string,
+}));
+
+// Tags
+const tags = Object.entries(tagMap).map(([id, label]) => ({
+  url: `/tag/${id}/`,
+  label: label as string,
+}));
+
+// Sort blog posts by date
+const sortedPosts = blogPosts.sort((a, b) => {
+  const dateA = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
+  const dateB = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
+  return dateB - dateA;
+});
+---
+
+<Layout title="サイトマップ - オンライン社交ダンスセミナー" description="ITxDANCERの全ページ一覧です。">
+  <main class="container mx-auto px-4 py-16 mt-16 max-w-5xl">
+    <h1 class="text-4xl lg:text-5xl text-center mb-12 text-primary font-heading underline decoration-primary/20 underline-offset-8">サイトマップ</h1>
+
+    <div class="grid gap-12 md:grid-cols-2">
+      <!-- Section: Main Pages -->
+      <section class="bg-card p-8 rounded-3xl shadow-sm border border-border">
+        <h2 class="text-2xl font-heading text-primary mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          主なページ
+        </h2>
+        <ul class="space-y-3">
+          {staticPages.map(page => (
+            <li>
+              <a href={page.url} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group">
+                <span class="w-1.5 h-1.5 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
+                {page.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="text-xl font-heading text-primary mt-8 mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
+          固定ページ
+        </h3>
+        <ul class="space-y-3">
+          {contentPages.filter(p => p.id !== 'ken-ono').map(page => (
+            <li>
+              <a href={`/${page.id}/`} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group">
+                <span class="w-1.5 h-1.5 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
+                {page.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Section: Categories -->
+      <section class="bg-card p-8 rounded-3xl shadow-sm border border-border">
+        <h2 class="text-2xl font-heading text-primary mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          カテゴリー一覧
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {categories.map(cat => (
+            <li>
+              <a href={cat.url} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group">
+                <span class="w-1.5 h-1.5 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
+                {cat.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <!-- Section: Tags -->
+      <section class="bg-card p-8 rounded-3xl shadow-sm border border-border md:col-span-2">
+        <h2 class="text-2xl font-heading text-primary mb-6 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+          タグ一覧
+        </h2>
+        <ul class="flex flex-wrap gap-x-6 gap-y-3">
+          {tags.map(tag => (
+            <li>
+              <a href={tag.url} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group text-sm">
+                <span class="w-1 h-1 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
+                {tag.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <!-- Section: Recent Blog Posts -->
+    <section class="mt-12 bg-card p-8 rounded-3xl shadow-sm border border-border">
+      <h2 class="text-2xl font-heading text-primary mb-8 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        最新の記事 (全 {blogPosts.length} 件)
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts.slice(0, 100).map(post => (
+          <a href={`/blog/${post.id}`} class="block p-4 rounded-2xl hover:bg-secondary/30 transition-colors border border-transparent hover:border-border">
+            <h3 class="font-medium line-clamp-2 mb-1">{post.data.title}</h3>
+            <time class="text-xs text-muted-foreground">{post.data.pubDate?.toLocaleDateString('ja-JP')}</time>
+          </a>
+        ))}
+        {blogPosts.length > 100 && (
+          <div class="flex items-center justify-center p-4">
+            <a href="/blog/" class="text-primary font-bold hover:underline italic">and more...</a>
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+</Layout>

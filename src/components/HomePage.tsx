@@ -722,9 +722,15 @@ export const Footer = () => {
                 </a>
                 <a
                   href="/ken-ono/"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
+                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
                 >
                   講師 大埜健について
+                </a>
+                <a
+                  href="/sitemap/"
+                   className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
+                >
+                  サイトマップ
                 </a>
               </div>
             </div>
