@@ -781,11 +781,7 @@ export const Footer = () => {
           className="text-muted-foreground/60 flex flex-col items-center justify-between gap-4 text-center text-xs md:flex-row"
         >
           <p>
-            &copy; {new Date().getFullYear()} Fauzira Alpiandi. All rights
-            reserved.
-          </p>
-          <p className="flex items-center justify-center gap-1">
-            Built with <Heart className="h-3 w-3 text-red-400" /> for cat lovers
+            &copy; {new Date().getFullYear()} ItxDancer <a href="/ken-ono/" className="hover:text-primary transition-colors">大埜健</a>.All rights reserved.
           </p>
         </motion.div>
       </div>
