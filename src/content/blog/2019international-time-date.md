@@ -8,32 +8,17 @@ categories: ["international", "competition"]
 tags: []
 author: "itxdancer"
 draft: false
-wpId: 499
-wpSlug: "2019international-time-date"
 ---
-
 2019年のロンドンインター（International Dance Championships）は、以下の日程で開催されます。 
-
 ## 予選とライジングスター
-
 ブレントウッド 国際ホール 
-
 ### 2019年10月8日 ラテン
-
 プロオープン、アマオープン戦の予選 ライジングスター ジュニア アンダー21 プロライジング [![](/assets/images/IMG_3478-644x1405_3.jpg)](</assets/images/IMG_3478_3.jpg>)  
-
 ### 2019年10月9日 スタンダード
-
 プロオープン、アマオープン戦の予選 ライジングスター ジュニア アンダー21 プロライジング ![](/assets/images/IMG_3479-644x1419_3.jpg)
-
 ## 本戦
-
 ロイヤル・アルバート・ホール 
-
 ### 2019年10月10日 ラテン スタンダード
-
 アマチュアボールルーム 17:45〜 アマチュアラテン 18:13〜 プロフェッショナルボールルーム 18:42〜 プロフェッショナルラテン 19:11〜 ![](/assets/images/IMG_3480-644x200_3.jpg)
-
 ## ロンドンの現在時刻
-
 [Londonの現在時間:](<https://time.is/London>)   結果速報や動画も、このホームページでアップしてゆきたいます。

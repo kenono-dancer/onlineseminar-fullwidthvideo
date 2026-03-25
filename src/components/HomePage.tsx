@@ -197,7 +197,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
       </div>
 
       {/* Seminar Slider integrated into Hero */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 mt-12 pb-12">
+      <div id="latest-seminars" className="relative z-10 w-full max-w-7xl mx-auto px-4 mt-12 pb-12">
         <div className="relative">
           {posts.length > 3 && (
             <>
@@ -222,7 +222,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             {posts.length > 0 ? (
               <>
                 {visiblePosts.map((post, idx) => (
-                  <a href={`/blog/${post.id}`} key={post.id} className="block w-full">
+                  <a href={`/${post.id}`} key={post.id} className="block w-full">
                     <FeatureCard
                       title={post.title}
                       desc={(post.description || '').substring(0, 100) + ((post.description && post.description.length > 100) ? '...' : '')}
@@ -287,64 +287,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
       {/* BEGIN: Why Free & What You Gain Section */}
       <div className="relative z-10 w-full max-w-7xl mx-auto mt-24 px-4 space-y-20">
 
-        {/* Section 1: 無料で提供する理由 */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="mb-12 space-y-4 text-center">
-            <span className="font-hand text-primary text-xl">
-              なぜ無料なのか
-            </span>
-            <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl leading-tight">
-              オンライン社交ダンスセミナーを<br className="hidden md:block" />無料で提供する理由
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                icon: <Lightbulb className="text-primary h-7 w-7" />,
-                title: '「感覚」を「理論」へ。\n納得の上達を。',
-                body: '社交ダンスは感覚的な教えが多く、複数の要素が絡み合い迷いが生じがちです。体系立てた理論を共有することで、誰もが迷わず上達できる環境を目指しています。',
-              },
-              {
-                icon: <MessageCircle className="text-primary h-7 w-7" />,
-                title: '効率的な\n「学びの使い分け」の提案',
-                body: '教室や練習場は思い切り動く場、オンラインは集中して知識を深め、部分練習をする場。正しく理解して繰り返し練習することが、理想のダンスへの最短距離だと信じています。',
-              },
-              {
-                icon: <Gift className="text-primary h-7 w-7" />,
-                title: '私なりの、\nダンス界への恩返し。',
-                body: '私自身、中途半端に色々な理論をかじり遠回りし、苦労した経験があります。かつての自分と同じ悩みを持つ方の力になりたい。無料、そして参加しやすいオンラインで門戸を広げ、業界を盛り上げることが私の願いです。',
-              },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="bg-card rounded-[2rem] p-8 shadow-lg hover:shadow-xl transition-all h-full flex flex-col"
-              >
-                <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full mb-5 shrink-0">
-                  {item.icon}
-                </div>
-                <h3 className="font-heading text-foreground text-lg font-bold mb-3 whitespace-pre-line leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed flex-1">
-                  {item.body}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Section 2: セミナーで得られること */}
+        {/* Section 1: セミナーで得られること */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -400,6 +343,63 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             ))}
           </div>
         </motion.div>
+
+        {/* Section 2: 無料で提供する理由 */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="mb-12 space-y-4 text-center">
+            <span className="font-hand text-primary text-xl">
+              無料のわけ
+            </span>
+            <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl leading-tight">
+              オンライン社交ダンスセミナーを<br className="hidden md:block" />無料で提供する理由
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              {
+                icon: <Lightbulb className="text-primary h-7 w-7" />,
+                title: '「感覚」を「理論」へ。\n迷いを払拭する、学びの場を',
+                body: '社交ダンスは感覚的な教えが多く、複数の要素が絡み合い迷いが生じがちです。体系立てた理論を共有することで、誰もが迷わず上達できる環境を目指しています。',
+              },
+              {
+                icon: <MessageCircle className="text-primary h-7 w-7" />,
+                title: '効率的な\n「学びの使い分け」の提案',
+                body: '教室や練習場は思い切り動く場、オンラインは集中して知識を深め、部分練習をする場。正しく理解して繰り返し練習することが、理想のダンスへの最短距離だと信じています。',
+              },
+              {
+                icon: <Gift className="text-primary h-7 w-7" />,
+                title: '私なりの、\nダンス界への恩返し',
+                body: '私自身、中途半端に色々な理論をかじり遠回りし、苦労した経験があります。かつての自分と同じ悩みを持つ方の力になりたい。無料、そして参加しやすいオンラインで門戸を広げ、業界を盛り上げることが私の願いです。',
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-card rounded-[2rem] p-8 shadow-lg hover:shadow-xl transition-all h-full flex flex-col"
+              >
+                <div className="bg-primary/15 flex h-14 w-14 items-center justify-center rounded-full mb-5 shrink-0">
+                  {item.icon}
+                </div>
+                <h3 className="font-heading text-foreground text-lg font-bold mb-3 whitespace-pre-line leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed flex-1">
+                  {item.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
       {/* END: Why Free & What You Gain Section */}
 
@@ -442,7 +442,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           <div className="w-full max-w-md">
             <a 
               className="bg-[#06C755] hover:bg-[#05b14c] transition-all duration-300 rounded-full py-5 px-8 flex items-center justify-between group shadow-xl shadow-green-500/20 hover:scale-[1.02]" 
-              href="https://lin.ee/yvAruxS!"
+              href="https://lin.ee/tviDWfg"
             >
               <span className="flex-grow text-center text-white font-bold text-lg md:text-2xl ml-6 font-heading">
                 LINE登録して無料で参加する
@@ -532,7 +532,7 @@ const Community = () => {
   ];
 
   return (
-    <section id="community" className="relative px-6 py-24 md:px-12 lg:px-24 bg-slate-50/80">
+    <section id="body-training" className="relative px-6 py-24 md:px-12 lg:px-24 bg-slate-50/80">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
@@ -596,7 +596,7 @@ const Community = () => {
 const QuoteSection = () => {
   return (
     <section
-      id="wisdom"
+      id="ken-ono"
       className="bg-secondary/20 flex flex-col items-center justify-center px-6 py-24 text-center"
     >
       <div className="mb-12 space-y-4 text-center">
@@ -754,7 +754,7 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col items-center gap-2">
               <a
-                href="https://line.me/R/ti/p/@your_id"
+                href="https://lin.ee/tviDWfg"
                 className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <div className="flex flex-col items-center leading-none -space-y-0.5">
@@ -781,7 +781,7 @@ export const Footer = () => {
           className="text-muted-foreground/60 flex flex-col items-center justify-between gap-4 text-center text-xs md:flex-row"
         >
           <p>
-            &copy; {new Date().getFullYear()} ItxDancer <a href="/ken-ono/" className="hover:text-primary transition-colors">大埜健</a>.All rights reserved.
+            &copy; {new Date().getFullYear()} ITxDANCER <a href="/ken-ono/" className="hover:text-primary transition-colors">大埜健</a>.All rights reserved.
           </p>
         </motion.div>
       </div>
@@ -794,7 +794,7 @@ export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { 
     <>
       <Hero posts={posts} nextPostId={nextPostId} totalCount={totalCount} />
       <Community />
-      <section id="cta" className="px-6 py-24 bg-white relative">
+      <section id="online-ballroomdance-lesson" className="px-6 py-24 bg-white relative">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -804,10 +804,10 @@ export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { 
             className="mb-12 space-y-4 text-center"
           >
             <span className="font-hand text-primary text-xl">
-              大埜健が直接指導する
+              1対1でじっくり
             </span>
             <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-              オンライン プライベートレッスン
+              オンライン 個人レッスン
             </h2>
           </motion.div>
 
@@ -815,7 +815,7 @@ export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { 
             {[
               {
                 id: 'cta-start-app',
-                title: 'プライベートレッスン',
+                title: '個人レッスン',
                 description:
                   'あなたのためだけの時間。\n社交ダンスのオンラインレッスンはもちろん、デモや試合のビデオから改善点を見つける、トレーニング、練習、質問など自由にお使えます。',
                 href: '/online-ballroomdance-lesson/#プライベートのオンラインレッスンだから',

@@ -8,8 +8,5 @@ categories: ["training-goods"]
 tags: ["家でできるトレーニング"]
 author: "itxdancer"
 draft: false
-wpId: 984
-wpSlug: "pushup-challenge"
 ---
-
 いつもの家でできるトレーニングの番外編です。 Twitterで回ってきた医療従事者を応援するための、プッシュアップ（腕立て）チャレンジ 私も撮影させて頂きました。 バランスボールの使い方の1つなので、良かったら参考にされて下さい。 https://youtu.be/_uXRyNqkSUI Twitter https://twitter.com/kensandance/status/1256865131192971266?s=20

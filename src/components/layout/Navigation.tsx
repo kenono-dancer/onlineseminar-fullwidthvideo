@@ -13,7 +13,7 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
     }
 
     const handleScroll = () => {
-      const sections = ['home', 'features', 'community', 'cta', 'wisdom'];
+      const sections = ['home', 'latest-seminars', 'body-training', 'online-ballroomdance-lesson', 'ken-ono'];
       let current = 'home';
 
       for (const section of sections) {
@@ -33,10 +33,10 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
   }, []);
 
   const navLinks = [
-    { href: '/#features', label: '社交ダンスセミナー', id: 'features' },
-    { href: '/#community', label: '体幹トレーニング', id: 'community' },
-    { href: '/#cta', label: 'プライベートレッスン', id: 'cta' },
-    { href: '/#wisdom', label: '講師 大埜健', id: 'wisdom' },
+    { href: '/#latest-seminars', label: '社交ダンスセミナー', id: 'latest-seminars' },
+    { href: '/#body-training', label: '体幹トレーニング', id: 'body-training' },
+    { href: '/#online-ballroomdance-lesson', label: '個人レッスン', id: 'online-ballroomdance-lesson' },
+    { href: '/#ken-ono', label: '講師 大埜健', id: 'ken-ono' },
   ];
 
   return (
@@ -80,7 +80,7 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
         ))}
         <div className="flex flex-col items-center gap-1">
           <a
-            href="https://line.me/R/ti/p/@your_id"
+                   href="https://lin.ee/tviDWfg"
             className="flex items-center bg-[#06C755] text-white px-2 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
           >
             <div className="flex flex-col items-center leading-none -space-y-0.5">
@@ -152,7 +152,7 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
             >
               <div className="flex flex-col items-center gap-2">
                 <a
-                  href="https://line.me/R/ti/p/@your_id"
+                         href="https://lin.ee/tviDWfg"
                   className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <div className="flex flex-col items-center leading-none -space-y-0.5">

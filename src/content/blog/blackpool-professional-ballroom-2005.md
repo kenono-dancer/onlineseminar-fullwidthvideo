@@ -8,8 +8,5 @@ categories: ["blackpooldancefestival", "competition"]
 tags: []
 author: "zakMNTXxio"
 draft: false
-wpId: 35
-wpSlug: "blackpool-professional-ballroom-2005"
 ---
-
 2005年のブラックプールダンスフェスティバル プロフェッショナルボールルーム部門 1 [Timothy Howson](<https://itxdancer.com/video/tag/timothy-howson/>) \- [Joanne Bolton](<https://itxdancer.com/video/tag/joanne-bolton/>) England 2 [Mirko Gozzoli](<https://itxdancer.com/video/tag/mirko-gozzoli/>) \- [Alessia Betti](<https://itxdancer.com/video/tag/alessia-betti/>) Italy 3 William Pino - Alessandra Bucciarelli Italy 4 Jonathan Wilkins - Katusha Demidova Usa 5 Christopher Hawkins - Justyna Kozinska England 6 Jonathan Crossley - Lyn Marriner England
