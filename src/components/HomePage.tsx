@@ -61,14 +61,13 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover z-0"
-          poster="/images/hero-poster.webp"
           onLoadedData={(e) => {
             e.currentTarget.muted = true;
             e.currentTarget.play();
           }}
         >
-          <source src="/videos/dance-logic.webm" type="video/webm" />
           <source src="/videos/dance-logic.mp4" type="video/mp4" />
+          <source src="/videos/dance-logic.webm" type="video/webm" />
         </video>
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/55 z-[1]" />
