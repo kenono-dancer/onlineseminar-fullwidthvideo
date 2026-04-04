@@ -106,7 +106,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             <p className="text-white/85 mx-auto w-full max-w-xl text-base leading-relaxed md:text-lg drop-shadow">
               <span className="text-primary font-bold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)'}}>根拠があるから、迷わない</span><br />
               <br />
-              社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解する
+              社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解するチャンス
             </p>
 
             {/* Trust Badges */}
