@@ -53,144 +53,94 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
   const isLastPage = currentIndex + 3 >= posts.length;
 
   return (
-    <section
-      id="home"
-      className="relative flex min-h-[90vh] flex-col items-center overflow-hidden px-6 py-12 md:px-12 lg:px-24"
-    >
-      {/* Decorative Blobs */}
-      <div className="bg-primary/10 absolute top-[-10%] left-[-10%] -z-10 h-[500px] w-[500px] rounded-full blur-3xl" />
-      <div className="bg-accent/30 absolute right-[-5%] bottom-[10%] -z-10 h-[400px] w-[400px] rounded-full blur-3xl" />
+    <section id="home">
+      {/* Hero First View with Background Video */}
+      <div className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-12 md:px-12 lg:px-24">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover z-0"
+          poster="/images/hero-poster.webp"
+        >
+          <source src="/videos/dance-logic.webm" type="video/webm" />
+          <source src="/videos/dance-logic.mp4" type="video/mp4" />
+        </video>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/55 z-[1]" />
 
-      {/* Centered Heading */}
-      <motion.div
-        className="relative z-20 mb-16 space-y-4 text-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <span className="font-hand text-primary text-xl md:text-2xl">
-          誰でも無料で参加できる
-        </span>
-        <h2 className="font-heading text-foreground text-4xl font-bold md:text-6xl">
-          オンライン社交ダンスセミナー
-        </h2>
-      </motion.div>
+        {/* Centered Heading */}
+        <motion.div
+          className="relative z-10 mb-12 space-y-4 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="font-hand text-yellow-300 text-xl md:text-2xl drop-shadow-lg">
+            誰でも無料で参加できる
+          </span>
+          <h2 className="font-heading text-white text-4xl font-bold md:text-6xl drop-shadow-lg">
+            オンライン社交ダンスセミナー
+          </h2>
+        </motion.div>
 
-      <div className="relative z-10 flex w-full flex-col items-center md:flex-row md:gap-12 mb-24">
-        <div className="w-full space-y-8 md:w-1/2">
+        <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center mb-24">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl xl:text-3xl">
-              その一歩に、確かな「理由」を。
+            <span className="font-hand text-yellow-300 mb-4 inline-block text-2xl xl:text-3xl drop-shadow-lg">
+              その一歩に、確かな「理由」を
             </span>
-            <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight">
-              なんとなくの感覚で踊る日々から、
+            <h1 className="font-heading text-white mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight drop-shadow-lg">
+              なんとなくの感覚踊りから
               <br />
-              <span className="text-primary mt-2 block">
+              <span className="text-yellow-300 mt-2 block">
                 卒業しませんか？
               </span>
             </h1>
-            <p className="text-muted-foreground w-full max-w-lg text-base leading-relaxed md:text-lg">
-              社交ダンスが本来持つ「テクニック・理論」を正しく理解する。<br />
+            <p className="text-white/85 mx-auto w-full max-w-xl text-base leading-relaxed md:text-lg drop-shadow">
+              社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解する<br />
               <br />
-              その理論を体現するために、運動学や機能解剖学に基づいた<br />
-              合理的な身体の使い方を付け加える。<br />
-              <br />
-              <span className="text-primary font-bold">根拠があるから、迷わない。</span><br />
-              自宅でじっくり、あなたのダンスを「構造」から変えていきましょう。
+              <span className="text-yellow-300 font-bold">根拠があるから、迷わない。</span>
             </p>
 
             {/* Trust Badges */}
             <motion.div
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap justify-center gap-4 pt-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               {[
-                { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-600' },
-                { icon: Lock, label: '【セミナーは無料】', color: 'text-green-600' },
+                { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-400' },
+                { icon: Lock, label: '【セミナーは無料】', color: 'text-green-400' },
                 {
                   icon: CheckCircle,
                   label: '【機能解剖学】',
-                  color: 'text-purple-600',
+                  color: 'text-purple-400',
                 },
-                { icon: Heart, label: '【500回以上継続】', color: 'text-red-600' },
+                { icon: Heart, label: '【500回以上継続】', color: 'text-red-400' },
               ].map((badge, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 + idx * 0.1 }}
-                  className="bg-secondary/30 border-border/40 flex items-center justify-center gap-2 rounded-full border px-3 py-2"
+                  className="bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center gap-2 rounded-full px-3 py-2"
                 >
                   <badge.icon
                     className={`h-4 w-4 flex-shrink-0 ${badge.color}`}
                   />
-                  <span className="text-foreground text-xs font-semibold">
+                  <span className="text-white text-xs font-semibold">
                     {badge.label}
                   </span>
                 </motion.div>
               ))}
-            </motion.div>
-          </motion.div>
-        </div>
-
-        <div className="relative mt-12 w-full md:mt-0 md:w-1/2">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="relative z-10"
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3 object-cover"
-              poster="/images/hero-poster.webp"
-            >
-              <source src="/videos/dance-logic.webm" type="video/webm" />
-              <source src="/videos/dance-logic.mp4" type="video/mp4" />
-            </video>
-
-            {/* Floating Cards */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-              className="bg-card absolute -bottom-8 -left-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:left-10"
-            >
-              <div className="rounded-full bg-green-100 p-2 text-green-600">
-                <Sparkles size={20} />
-              </div>
-              <div>
-                <p className="text-sm font-bold">無料で参加</p>
-                <p className="text-muted-foreground text-[10px]">社交ダンスセミナー</p>
-              </div>
-            </motion.div>
-
-            {/* Second Badge */}
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-                ease: 'easeInOut',
-                delay: 0.5,
-              }}
-              className="bg-card absolute -top-4 -right-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:-right-8"
-            >
-              <div className="rounded-full bg-blue-100 p-2 text-blue-600">
-                <Users size={20} />
-              </div>
-              <div>
-                <p className="text-sm font-bold">500回以上開催</p>
-                <p className="text-muted-foreground text-xs">since 2018</p>
-              </div>
             </motion.div>
           </motion.div>
         </div>
