@@ -1,11 +1,13 @@
-# 1. 拡張子が .mp4 や .webm のファイルは、絶対に転送せずこのサイトで維持する
-/*.mp4  /:splat  200
-/*.webm /:splat  200
+# 1. 最優先：videosフォルダ内のファイルは一切転送せず、このサイトで読み込む
+/videos/* /videos/:splat  200
 
-# 2. サブドメインへの転送設定
-/tech/* https://tech.itxdancer.com/:splat    301
-/step/* https://step.itxdancer.com/:splat    301
-/hall/* https://hall.itxdancer.com/:splat    301
+# 2. カテゴリー別の転送（末尾にスラッシュがあってもなくても対応）
+/tech* https://tech.itxdancer.com/:splat  301
+/step* https://step.itxdancer.com/:splat  301
+/hall* https://hall.itxdancer.com/:splat  301
 
-# 3. 旧動画ディレクトリ(/video/)から新しい動画サブドメインへの転送
-/video/* https://video.itxdancer.com/:splat   301
+# 3. /video（単数形）へのアクセスのみ、新しい動画サイトへ飛ばす
+# ※これにより /videos（複数形）との衝突を避けます
+/video  https://video.itxdancer.com/  301
+/video/  https://video.itxdancer.com/  301
+/video/* https://video.itxdancer.com/:splat  301
