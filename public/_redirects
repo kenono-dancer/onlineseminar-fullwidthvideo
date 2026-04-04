@@ -1,3 +1,6 @@
+/video/*.mp4 /video/:splat 200
+
+# その後に転送設定
 /tech/* https://tech.itxdancer.com/:splat  301
 /step/* https://step.itxdancer.com/:splat  301
 /hall/* https://hall.itxdancer.com/:splat  301
