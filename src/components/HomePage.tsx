@@ -754,7 +754,7 @@ export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { 
             className="mb-12 space-y-4 text-center"
           >
             <span className="font-hand text-primary text-xl">
-              1対1でじっくり
+              1対1のプライベートレッスン
             </span>
             <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
               オンライン 個人レッスン
