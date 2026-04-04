@@ -99,14 +99,14 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             <h1 className="font-heading text-white mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight drop-shadow-lg">
               なんとなくの感覚踊りから
               <br />
-              <span className="text-yellow-300 mt-2 block">
+              <span className="text-white mt-2 block">
                 卒業しませんか？
               </span>
             </h1>
             <p className="text-white/85 mx-auto w-full max-w-xl text-base leading-relaxed md:text-lg drop-shadow">
-              社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解する<br />
+              <span className="text-yellow-300 font-bold">根拠があるから、迷わない</span><br />
               <br />
-              <span className="text-yellow-300 font-bold">根拠があるから、迷わない。</span>
+              社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解する
             </p>
 
             {/* Trust Badges */}
