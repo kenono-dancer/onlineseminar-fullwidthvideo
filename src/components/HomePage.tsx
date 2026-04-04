@@ -117,14 +117,14 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               {[
-                { icon: Star, label: '【A級プロが講師】', color: 'text-yellow-400' },
-                { icon: Lock, label: '【セミナーは無料】', color: 'text-green-400' },
+                { icon: Star, label: 'A級プロが講師', color: 'text-yellow-400' },
+                { icon: Lock, label: 'セミナーは無料', color: 'text-green-400' },
                 {
                   icon: CheckCircle,
-                  label: '【機能解剖学】',
+                  label: '機能解剖学',
                   color: 'text-purple-400',
                 },
-                { icon: Heart, label: '【500回以上継続】', color: 'text-red-400' },
+                { icon: Heart, label: '500回以上継続', color: 'text-red-400' },
               ].map((badge, idx) => (
                 <motion.div
                   key={idx}
