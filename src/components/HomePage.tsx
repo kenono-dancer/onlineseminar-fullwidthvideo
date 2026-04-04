@@ -613,7 +613,7 @@ export const Footer = () => {
               </h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              元プロA級ダンサーが教える、オンライン社交ダンスセミナー・プライベートレッスン・体幹トレーニング。
+              元JBDFプロA級大埜健が教える、オンライン社交ダンスセミナー・プライベートレッスン・体幹トレーニング。
               運動学と機能解剖学に基づいた理論的な指導で、ポスチャーや動きを骨格レベルから改善。
               初心者から競技者まで、自宅から本格的に社交ダンスを学べます。
             </p>
@@ -709,10 +709,10 @@ export const Footer = () => {
               >
                 <div className="flex flex-col items-center leading-none -space-y-0.5">
                   <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
-                    LINE ▶
+                    ▶ LINE登録
                   </span>
-                  <span className="text-base font-bold tracking-tight">
-                    ここから参加
+                  <span className="text-sm font-bold tracking-tight">
+                    セミナー参加と録画視聴はこちら
                   </span>
                 </div>
               </a>
