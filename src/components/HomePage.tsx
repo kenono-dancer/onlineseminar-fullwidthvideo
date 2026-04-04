@@ -29,8 +29,6 @@ import {
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-
-
 const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const hasMore = nextPostId !== '';
@@ -56,7 +54,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
     <section id="home">
       {/* Hero First View with Background Video */}
       <div className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-12 md:px-12 lg:px-24">
-        {/* Background Video */}
+        {/* Background Video - 修正済み: onLoadedDataを追加 */}
         <video
           autoPlay
           loop
@@ -64,6 +62,10 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           playsInline
           className="absolute inset-0 h-full w-full object-cover z-0"
           poster="/images/hero-poster.webp"
+          onLoadedData={(e) => {
+            e.currentTarget.muted = true;
+            e.currentTarget.play();
+          }}
         >
           <source src="/videos/dance-logic.webm" type="video/webm" />
           <source src="/videos/dance-logic.mp4" type="video/mp4" />
@@ -121,7 +123,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
                 { icon: Lock, label: 'セミナーは無料', color: 'text-green-400' },
                 {
                   icon: CheckCircle,
-                  label: '機能解剖学',
+                  label: '機能解備学',
                   color: 'text-purple-400',
                 },
                 { icon: Heart, label: '500回以上継続', color: 'text-red-400' },
@@ -451,7 +453,6 @@ export interface Post {
   description: string;
   heroImage: string;
 }
-
 
 const Community = () => {
   const testimonials = [
