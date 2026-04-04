@@ -1,7 +1,10 @@
-/video/*.mp4 /video/:splat 200
+# 1. /videos/ フォルダ（動画素材）へのアクセスは転送せず、そのまま通す
+/videos/* /videos/:splat  200
 
-# その後に転送設定
-/tech/* https://tech.itxdancer.com/:splat  301
-/step/* https://step.itxdancer.com/:splat  301
-/hall/* https://hall.itxdancer.com/:splat  301
-/video/* https://video.itxdancer.com/:splat 301
+# 2. サブドメインへの転送設定
+/tech/* https://tech.itxdancer.com/:splat   301
+/step/* https://step.itxdancer.com/:splat   301
+/hall/* https://hall.itxdancer.com/:splat   301
+
+# 3. 旧動画ディレクトリから新サブドメインへの転送
+/video/* https://video.itxdancer.com/:splat  301
