@@ -486,7 +486,7 @@ const Community = () => {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
-            社交ダンスに特化した
+            社交ダンスに特化
           </span>
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
             オンライン体幹トレーニング
