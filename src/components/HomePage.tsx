@@ -103,7 +103,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
                 卒業しませんか？
               </span>
             </h1>
-            <p className="text-white/85 mx-auto w-full max-w-xl text-base leading-relaxed md:text-lg drop-shadow">
+            <p className="text-white/85 mx-auto w-full max-w-2xl text-base leading-relaxed md:text-lg drop-shadow">
               <span className="text-primary font-bold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)'}}>根拠があるから、迷わない</span><br />
               <br />
               社交ダンスの「テクニック・理論・身体の仕組み」を正しく理解するチャンス
