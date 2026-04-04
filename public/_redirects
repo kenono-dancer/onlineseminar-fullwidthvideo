@@ -1,1 +1,4 @@
-/tech/* https://tech.itxdancer.com/:splat 301
+/tech/* https://tech.itxdancer.com/:splat  301
+/step/* https://step.itxdancer.com/:splat  301
+/hall/* https://hall.itxdancer.com/:splat  301
+/video/* https://video.itxdancer.com/:splat 301
