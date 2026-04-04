@@ -78,7 +78,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-hand text-yellow-300 text-xl md:text-2xl drop-shadow-lg">
+          <span className="font-hand text-white text-xl md:text-2xl drop-shadow-lg">
             誰でも無料で参加できる
           </span>
           <h2 className="font-heading text-white text-4xl font-bold md:text-6xl drop-shadow-lg">
@@ -93,7 +93,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="font-hand text-yellow-300 mb-4 inline-block text-2xl xl:text-3xl drop-shadow-lg">
+            <span className="font-hand text-white mb-4 inline-block text-2xl xl:text-3xl drop-shadow-lg">
               その一歩に、確かな「理由」を
             </span>
             <h1 className="font-heading text-white mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight drop-shadow-lg">
@@ -104,7 +104,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
               </span>
             </h1>
             <p className="text-white/85 mx-auto w-full max-w-xl text-base leading-relaxed md:text-lg drop-shadow">
-              <span className="text-yellow-300 font-bold">根拠があるから、迷わない</span><br />
+              <span className="text-white font-bold">根拠があるから、迷わない</span><br />
               <br />
               社交ダンスが本来持つ「テクニック・理論・身体の仕組み」を正しく理解する
             </p>
