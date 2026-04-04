@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://itxdancer.com', // ← 【ここを追加！】ルートドメインを指定
+  site: 'https://itxdancer.com', 
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },
   trailingSlash: 'ignore',
