@@ -28,5 +28,31 @@ const totalSeminarCount = allSeminarPosts.length;
   description="Find your zen with cat-inspired meditation. Guided breathing exercises, mindfulness sessions, and feline wisdom to help you relax. One breath, one paw print at a time."
   canonicalPath="/"
 >
+  {/* Background video rendered as static HTML to ensure muted attribute is in DOM for iOS autoplay */}
+  <div id="hero-video-container" style="position:fixed;top:0;left:0;width:100%;height:90vh;z-index:0;pointer-events:none;overflow:hidden;">
+    <video
+      id="hero-bg-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      style="width:100%;height:100%;object-fit:cover;"
+    >
+      <source src="/videos/dance-logic.mp4" type="video/mp4" />
+      <source src="/videos/dance-logic.webm" type="video/webm" />
+    </video>
+  </div>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      var v = document.getElementById('hero-bg-video');
+      if (v) {
+        v.muted = true;
+        v.setAttribute('muted', '');
+        v.play().catch(function() {});
+      }
+    });
+  </script>
   <HomePage posts={posts} nextPostId={nextPostId} totalCount={totalSeminarCount} client:load />
 </Layout>

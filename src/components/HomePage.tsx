@@ -27,19 +27,11 @@ import {
   Monitor,
   Trophy,
 } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[]; nextPostId?: string; totalCount?: number }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const hasMore = nextPostId !== '';
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.play().catch(() => {});
-  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => {
@@ -62,22 +54,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
     <section id="home">
       {/* Hero First View with Background Video */}
       <div className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-12 md:px-12 lg:px-24">
-        {/* Background Video */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          // @ts-ignore - webkit-playsinline for older iOS
-          webkit-playsinline=""
-          preload="auto"
-          className="absolute inset-0 h-full w-full object-cover z-0"
-        >
-          <source src="/videos/dance-logic.mp4" type="video/mp4" />
-          <source src="/videos/dance-logic.webm" type="video/webm" />
-        </video>
-        {/* Dark Overlay */}
+        {/* Dark Overlay - video is rendered in Astro template for iOS autoplay compatibility */}
         <div className="absolute inset-0 bg-black/55 z-[1]" />
 
         {/* Centered Heading */}
