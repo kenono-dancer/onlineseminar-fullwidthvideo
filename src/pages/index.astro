@@ -29,7 +29,7 @@ const totalSeminarCount = allSeminarPosts.length;
   canonicalPath="/"
 >
   {/* Background video rendered as static HTML to ensure muted attribute is in DOM for iOS autoplay */}
-  <div id="hero-video-container" style="position:absolute;top:70px;left:0;width:100%;height:90vh;z-index:10;pointer-events:none;overflow:hidden;">
+  <div id="hero-video-container" style="position:absolute;top:73px;left:0;width:100%;height:90vh;z-index:10;pointer-events:none;overflow:hidden;">
     <video
       id="hero-bg-video"
       autoplay
@@ -47,6 +47,12 @@ const totalSeminarCount = allSeminarPosts.length;
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function() {
       var v = document.getElementById('hero-bg-video');
+      var container = document.getElementById('hero-video-container');
+      var nav = document.querySelector('nav');
+      if (nav && container) {
+        var navH = nav.getBoundingClientRect().height;
+        container.style.top = navH + 'px';
+      }
       if (v) {
         v.muted = true;
         v.setAttribute('muted', '');
