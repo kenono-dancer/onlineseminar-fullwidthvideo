@@ -3,8 +3,7 @@
   "configurations": [
     {
       "name": "astro-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "/tmp/start-dance-seminar.sh",
       "port": 4321
     }
   ]
