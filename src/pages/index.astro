@@ -29,7 +29,7 @@ const totalSeminarCount = allSeminarPosts.length;
   canonicalPath="/"
 >
   {/* Background video rendered as static HTML to ensure muted attribute is in DOM for iOS autoplay */}
-  <div id="hero-video-container" style="position:absolute;top:73px;left:0;width:100%;height:90vh;z-index:10;pointer-events:none;overflow:hidden;">
+  <div id="hero-video-container" style="position:absolute;left:0;width:100%;z-index:0;pointer-events:none;overflow:hidden;visibility:hidden;">
     <video
       id="hero-bg-video"
       autoplay
@@ -45,20 +45,35 @@ const totalSeminarCount = allSeminarPosts.length;
     </video>
   </div>
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
-      var v = document.getElementById('hero-bg-video');
+    function alignVideoToHero() {
       var container = document.getElementById('hero-video-container');
-      var nav = document.querySelector('nav');
-      if (nav && container) {
-        var navH = nav.getBoundingClientRect().height;
-        container.style.top = navH + 'px';
+      var heroDiv = document.querySelector('#home > div');
+      if (!container || !heroDiv) return false;
+      var rect = heroDiv.getBoundingClientRect();
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      container.style.top = (rect.top + scrollY) + 'px';
+      container.style.height = rect.height + 'px';
+      container.style.visibility = 'visible';
+      return true;
+    }
+    function initHeroVideo() {
+      if (!alignVideoToHero()) {
+        requestAnimationFrame(initHeroVideo);
+        return;
       }
+      window.addEventListener('resize', alignVideoToHero);
+      var v = document.getElementById('hero-bg-video');
       if (v) {
         v.muted = true;
         v.setAttribute('muted', '');
         v.play().catch(function() {});
       }
-    });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroVideo);
+    } else {
+      initHeroVideo();
+    }
   </script>
   <HomePage posts={posts} nextPostId={nextPostId} totalCount={totalSeminarCount} client:load />
 </Layout>
