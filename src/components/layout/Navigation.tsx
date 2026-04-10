@@ -100,8 +100,10 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
         className="text-foreground bg-primary/10 hover:bg-primary/25 rounded-full p-2 transition-colors md:hidden"
         onClick={() => setIsOpen(!isOpen)}
         data-testid="button-menu-toggle"
+        aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
+        aria-expanded={isOpen}
       >
-        {isOpen ? <X /> : <Menu />}
+        {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
 
       {/* Mobile Nav Menu */}

@@ -67,9 +67,9 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           <span className="font-hand text-primary text-xl md:text-2xl" style={{textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)'}}>
             誰でも無料で参加できる
           </span>
-          <h2 className="font-heading text-white text-4xl font-bold md:text-6xl drop-shadow-lg">
+          <h1 className="font-heading text-white text-4xl font-bold md:text-6xl drop-shadow-lg">
             オンライン社交ダンスセミナー
-          </h2>
+          </h1>
         </motion.div>
 
         <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center mb-24">
@@ -82,13 +82,13 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
             <span className="font-hand text-primary mb-4 inline-block text-2xl xl:text-3xl" style={{textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)'}}>
               その一歩に、確かな「理由」を
             </span>
-            <h1 className="font-heading text-white mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight drop-shadow-lg">
+            <h2 className="font-heading text-white mb-6 text-4xl leading-[1.2] font-bold md:text-5xl lg:text-6xl tracking-tight drop-shadow-lg">
               なんとなくの感覚踊りから
               <br />
               <span className="text-white mt-2 block">
                 卒業しませんか？
               </span>
-            </h1>
+            </h2>
             <p className="text-white/85 mx-auto w-full max-w-2xl text-base leading-relaxed md:text-lg drop-shadow">
               <span className="text-primary font-bold" style={{textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)'}}>根拠があるから、迷わない</span><br />
               <br />
@@ -231,7 +231,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           transition={{ duration: 0.7 }}
         >
           <div className="mb-12 space-y-4 text-center">
-            <span className="font-hand text-primary text-xl">
+            <span className="font-hand text-primary-dark text-xl">
               参加するメリット
             </span>
             <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
@@ -288,7 +288,7 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           transition={{ duration: 0.7 }}
         >
           <div className="mb-12 space-y-4 text-center">
-            <span className="font-hand text-primary text-xl">
+            <span className="font-hand text-primary-dark text-xl">
               無料のわけ
             </span>
             <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl leading-tight">
@@ -354,12 +354,12 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           <div className="flex items-center gap-6 mb-10">
             {/* Zoom Icon */}
             <div className="flex items-center gap-2">
-              <img src="/images/zoom-logo.jpg" alt="Zoom" className="h-8 w-auto object-contain" loading="lazy" />
+              <img src="/images/zoom-logo.jpg" alt="Zoom" className="h-8 w-auto object-contain" loading="lazy" width="80" height="32" />
             </div>
             <div className="h-8 w-[1px] bg-border"></div>
             {/* YouTube Icon */}
             <div className="flex items-center gap-2">
-              <img src="/images/youtube-logo.jpg" alt="YouTube" className="h-8 w-auto object-contain" loading="lazy" />
+              <img src="/images/youtube-logo.jpg" alt="YouTube" className="h-8 w-auto object-contain" loading="lazy" width="80" height="32" />
             </div>
           </div>
 
@@ -422,6 +422,8 @@ const FeatureCard = ({
           className="mb-8 h-48 w-auto object-contain drop-shadow-md"
           whileHover={{ scale: 1.05 }}
           loading="lazy"
+          width="320"
+          height="180"
         />
         <h3 className="font-heading text-foreground mb-3 text-2xl font-bold">
           {title}
@@ -557,6 +559,8 @@ const QuoteSection = () => {
             alt="大埜 健"
             className="w-48 h-48 md:w-full md:h-auto rounded-full md:rounded-2xl object-cover shadow-md"
             loading="lazy"
+            width="400"
+            height="400"
           />
         </div>
 
@@ -741,7 +745,7 @@ export default function Home({ posts = [], nextPostId = '', totalCount = 0 }: { 
             transition={{ duration: 0.6 }}
             className="mb-12 space-y-4 text-center"
           >
-            <span className="font-hand text-primary text-xl">
+            <span className="font-hand text-primary-dark text-xl">
               1対1のプライベートレッスン
             </span>
             <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
