@@ -5,7 +5,7 @@ pubDate: "2019-03-11T05:26:19"
 updatedDate: "2020-06-09T16:26:55"
 heroImage: "/assets/images/4327B66C-6591-409A-BD27-7EA9C376753E-e1552266922463_3.jpeg"
 categories: ["training-goods"]
-tags: ["ストレッチ", "トレーニング"]
+tags: ["ストレッチ", "トレーニング", "トレーニング道具"]
 author: "itxdancer"
 draft: false
 ---

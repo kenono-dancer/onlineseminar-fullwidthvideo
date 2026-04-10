@@ -5,7 +5,7 @@ pubDate: "2020-04-26T18:53:03"
 updatedDate: "2020-05-01T05:11:56"
 heroImage: "/assets/images/0952697A-4207-4959-8A9D-D196FEC22A92_3.jpeg"
 categories: ["training-goods"]
-tags: ["家でできるトレーニング"]
+tags: ["家でできるトレーニング", "トレーニング", "トレーニング道具"]
 author: "itxdancer"
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: "2020-04-07T02:32:09"
 updatedDate: "2020-04-07T04:41:19"
 heroImage: "/assets/images/slackrail_dance-e1586194314873_3.jpg"
 categories: ["training-goods"]
-tags: ["ストレッチ", "トレーニング", "家でできるトレーニング"]
+tags: ["ストレッチ", "トレーニング", "家でできるトレーニング", "トレーニング道具"]
 author: "itxdancer"
 draft: false
 ---

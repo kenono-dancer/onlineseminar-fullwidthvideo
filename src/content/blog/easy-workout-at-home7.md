@@ -5,7 +5,7 @@ pubDate: "2020-04-15T19:45:58"
 updatedDate: "2020-04-15T23:24:06"
 heroImage: "/assets/images/Easy-WORKOUT-HOME7_3.jpg"
 categories: ["training-goods"]
-tags: ["ストレッチ", "トレーニング", "家でできるトレーニング"]
+tags: ["ストレッチ", "トレーニング", "家でできるトレーニング", "トレーニング道具", "下半身", "呼吸で整えるダンスボディ", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: "2021-08-09T03:23:12"
 updatedDate: "2021-08-09T04:17:10"
 heroImage: "/assets/images/dancewave-kachi-ken_3.jpeg"
 categories: ["online-lesson", "uncategorized"]
-tags: []
+tags: ["", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

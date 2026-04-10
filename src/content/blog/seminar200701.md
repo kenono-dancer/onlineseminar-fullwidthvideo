@@ -5,7 +5,7 @@ pubDate: "2020-07-01T04:17:16"
 updatedDate: "2022-11-30T16:00:26"
 heroImage: "/assets/images/ballroom_dance_seminar_3.jpg"
 categories: ["online-lesson"]
-tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "すべらない踊り", "海外コーチャーレクチャー"]
 author: "itxdancer"
 draft: false
 ---

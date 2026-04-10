@@ -5,7 +5,7 @@ pubDate: "2019-02-26T01:07:01"
 updatedDate: "2019-12-12T01:59:46"
 heroImage: "/assets/images/mfc00_3.jpg"
 categories: ["確定申告"]
-tags: ["税金"]
+tags: ["税金", "ダンス教師"]
 author: "itxdancer"
 draft: false
 ---

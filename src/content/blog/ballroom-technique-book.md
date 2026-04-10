@@ -5,7 +5,7 @@ pubDate: "2020-07-18T05:24:37"
 updatedDate: "2024-02-10T22:24:55"
 heroImage: "/assets/images/Ballroomdance-techniquebook-scaled_3.jpg"
 categories: ["online-lesson", "training-goods"]
-tags: ["社交ダンス 教科書"]
+tags: ["社交ダンス 教科書", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "スローフォックストロットの特徴を表現する方法"]
 author: "itxdancer"
 draft: false
 ---

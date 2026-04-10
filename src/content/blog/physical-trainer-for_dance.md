@@ -5,7 +5,7 @@ pubDate: "2019-10-16T15:34:34"
 updatedDate: "2021-09-22T01:06:30"
 heroImage: "/assets/images/training_3.png"
 categories: ["training-goods"]
-tags: []
+tags: ["", "ストレッチ", "トレーニング", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

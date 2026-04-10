@@ -5,7 +5,7 @@ pubDate: "2019-12-12T01:37:51"
 updatedDate: "2020-01-17T00:13:09"
 heroImage: "/assets/images/danceamore-hptop_3.png"
 categories: ["competition"]
-tags: ["DanceAmore"]
+tags: ["DanceAmore", "トレーニング", "海外コーチャーレクチャー"]
 author: "itxdancer"
 draft: false
 ---

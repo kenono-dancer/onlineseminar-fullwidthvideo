@@ -5,7 +5,7 @@ pubDate: "2020-06-01T11:09:06"
 updatedDate: "2022-11-30T15:58:28"
 heroImage: "/assets/images/ballroom_dance_seminar_3.jpg"
 categories: ["online-lesson"]
-tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "ストレッチ", "トレーニング", "ピクチャーポーズ", "上半身の向き", "下半身"]
 author: "itxdancer"
 draft: false
 ---

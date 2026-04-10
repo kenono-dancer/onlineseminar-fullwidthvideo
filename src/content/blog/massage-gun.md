@@ -5,7 +5,7 @@ pubDate: "2021-09-19T03:24:17"
 updatedDate: "2022-04-03T15:15:16"
 heroImage: "/assets/images/massage-gun_3.jpg"
 categories: ["training-goods"]
-tags: []
+tags: ["", "ストレッチ", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

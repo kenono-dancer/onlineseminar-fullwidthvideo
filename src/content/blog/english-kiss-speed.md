@@ -5,7 +5,7 @@ pubDate: "2019-09-24T01:19:05"
 updatedDate: "2020-05-01T02:48:47"
 heroImage: "/assets/images/english-hapa190923_3.png"
 categories: ["for_lesson"]
-tags: []
+tags: ["", "ダンスの英語", "海外コーチャーレクチャー"]
 author: "itxdancer"
 draft: false
 ---

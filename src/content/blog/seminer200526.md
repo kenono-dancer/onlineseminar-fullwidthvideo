@@ -5,7 +5,7 @@ pubDate: "2020-05-23T04:05:36"
 updatedDate: "2022-11-30T15:58:21"
 heroImage: "/assets/images/ballroom_dance_seminar_3.jpg"
 categories: ["online-lesson"]
-tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "すべらない踊り", "ストレッチ", "スローフォックストロットの特徴を表現する方法", "トレーニング", "ムーブメント", "上半身の向き"]
 author: "itxdancer"
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: "2020-09-05T21:49:52"
 updatedDate: "2021-01-27T01:10:15"
 heroImage: "/assets/images/200907-14-scaled-e1599309903642_3.jpg"
 categories: ["online-lesson"]
-tags: ["海外コーチャーレクチャー"]
+tags: ["海外コーチャーレクチャー", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: "2020-11-16T03:02:01"
 updatedDate: "2021-01-27T01:10:00"
 heroImage: "/assets/images/Alenika-Nov9_23_3.jpg"
 categories: ["online-lesson"]
-tags: ["海外コーチャーレクチャー"]
+tags: ["海外コーチャーレクチャー", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

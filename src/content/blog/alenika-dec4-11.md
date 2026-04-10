@@ -5,7 +5,7 @@ pubDate: "2020-12-02T21:58:43"
 updatedDate: "2021-01-27T01:09:13"
 heroImage: "/assets/images/Alenika12-4-11-scaled_3.jpg"
 categories: ["online-lesson"]
-tags: ["海外コーチャーレクチャー"]
+tags: ["海外コーチャーレクチャー", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

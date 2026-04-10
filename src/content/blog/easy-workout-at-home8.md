@@ -5,7 +5,7 @@ pubDate: "2020-04-18T01:08:37"
 updatedDate: "2020-04-18T01:13:53"
 heroImage: "/assets/images/EE912BB5-420C-45EB-8631-32E7DF9ECAF0-e1587139820180_3.png"
 categories: ["training-goods"]
-tags: ["ストレッチ", "トレーニング", "家でできるトレーニング"]
+tags: ["ストレッチ", "トレーニング", "家でできるトレーニング", "ホールド", "筋肉", "骨格"]
 author: "itxdancer"
 draft: false
 ---

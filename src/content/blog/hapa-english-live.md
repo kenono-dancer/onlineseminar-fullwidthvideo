@@ -5,7 +5,7 @@ pubDate: "2020-04-07T04:31:23"
 updatedDate: "2020-05-01T02:48:13"
 heroImage: "/assets/images/Hapa-English_3.jpg"
 categories: ["for_lesson"]
-tags: ["ダンスの英語"]
+tags: ["ダンスの英語", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

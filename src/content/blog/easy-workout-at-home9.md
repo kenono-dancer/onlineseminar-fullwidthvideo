@@ -5,7 +5,7 @@ pubDate: "2020-04-23T01:35:59"
 updatedDate: "2020-05-03T18:50:42"
 heroImage: "/assets/images/easy-workout-at-home9_3.jpg"
 categories: ["training-goods"]
-tags: ["家でできるトレーニング"]
+tags: ["家でできるトレーニング", "ストレッチ", "トレーニング", "トレーニング道具", "下半身", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

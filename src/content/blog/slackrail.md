@@ -5,7 +5,7 @@ pubDate: "2020-02-14T22:09:16"
 updatedDate: "2024-01-10T21:56:34"
 heroImage: "/assets/images/slackrail2-e1581685907276_3.jpg"
 categories: ["training-goods"]
-tags: ["トレーニング道具"]
+tags: ["トレーニング道具", "トレーニング"]
 author: "itxdancer"
 draft: false
 ---

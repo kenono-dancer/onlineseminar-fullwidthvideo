@@ -5,7 +5,7 @@ pubDate: "2020-12-30T16:03:03"
 updatedDate: "2022-11-30T16:21:42"
 heroImage: "/assets/images/Ballroom_dance_semnar-zoom_3.png"
 categories: ["online-lesson"]
-tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "スイング", "ストレッチ", "トレーニング", "自己分析"]
 author: "itxdancer"
 draft: false
 ---

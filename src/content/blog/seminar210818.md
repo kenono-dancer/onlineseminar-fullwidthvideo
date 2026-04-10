@@ -5,7 +5,7 @@ pubDate: "2021-08-17T19:42:14"
 updatedDate: "2022-11-30T16:53:50"
 heroImage: "/assets/images/0A03CC0D-D1B4-4FBB-B189-9BEABBD3D378-e1629197318504_3.jpeg"
 categories: ["online-lesson"]
-tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "ストレッチ", "トレーニング", "ホールド", "推進力", "立ち方と組み方"]
 author: "itxdancer"
 draft: false
 ---

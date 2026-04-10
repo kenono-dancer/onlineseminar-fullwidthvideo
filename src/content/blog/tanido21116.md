@@ -5,7 +5,7 @@ pubDate: "2020-11-11T21:58:49"
 updatedDate: "2020-11-12T00:12:48"
 heroImage: "/assets/images/201116谷堂先生ス_ームトークレクチャー_3.jpg"
 categories: ["online-lesson"]
-tags: []
+tags: ["", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン"]
 author: "itxdancer"
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: "2019-03-27T17:15:25"
 updatedDate: "2020-05-01T02:49:14"
 heroImage: "/assets/images/IMG_5089_3.jpg"
 categories: ["for_lesson"]
-tags: ["ダンスの英語"]
+tags: ["ダンスの英語", "すべらない踊り", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

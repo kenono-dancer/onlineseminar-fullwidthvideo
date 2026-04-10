@@ -5,7 +5,7 @@ pubDate: "2019-06-16T14:37:30"
 updatedDate: "2020-05-01T02:48:58"
 heroImage: "/assets/images/IMG_5089_3.jpg"
 categories: ["for_lesson"]
-tags: []
+tags: ["", "ダンスの英語", "ホールド", "ポスチャー"]
 author: "itxdancer"
 draft: false
 ---
