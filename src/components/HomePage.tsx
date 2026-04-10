@@ -354,12 +354,12 @@ const Hero = ({ posts = [], nextPostId = '', totalCount = 0 }: { posts?: Post[];
           <div className="flex items-center gap-6 mb-10">
             {/* Zoom Icon */}
             <div className="flex items-center gap-2">
-              <img src="/images/zoom-logo.jpg" alt="Zoom" className="h-8 w-auto object-contain" />
+              <img src="/images/zoom-logo.jpg" alt="Zoom" className="h-8 w-auto object-contain" loading="lazy" />
             </div>
             <div className="h-8 w-[1px] bg-border"></div>
             {/* YouTube Icon */}
             <div className="flex items-center gap-2">
-              <img src="/images/youtube-logo.jpg" alt="YouTube" className="h-8 w-auto object-contain" />
+              <img src="/images/youtube-logo.jpg" alt="YouTube" className="h-8 w-auto object-contain" loading="lazy" />
             </div>
           </div>
 
@@ -421,6 +421,7 @@ const FeatureCard = ({
           alt={title}
           className="mb-8 h-48 w-auto object-contain drop-shadow-md"
           whileHover={{ scale: 1.05 }}
+          loading="lazy"
         />
         <h3 className="font-heading text-foreground mb-3 text-2xl font-bold">
           {title}
@@ -555,6 +556,7 @@ const QuoteSection = () => {
             src="/assets/images/ken_ono_3.png"
             alt="大埜 健"
             className="w-48 h-48 md:w-full md:h-auto rounded-full md:rounded-2xl object-cover shadow-md"
+            loading="lazy"
           />
         </div>
 

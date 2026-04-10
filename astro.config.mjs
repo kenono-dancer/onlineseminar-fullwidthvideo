@@ -10,7 +10,8 @@ export default defineConfig({
   base: '/',
   server: {
     host: '0.0.0.0',
-    port: 4325,
+    port: 4326,
+    host: '0.0.0.0',
     allowedHosts: true,
   },
 });
