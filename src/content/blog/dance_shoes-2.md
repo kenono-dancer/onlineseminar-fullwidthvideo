@@ -5,7 +5,7 @@ pubDate: "2019-07-05T00:53:07"
 updatedDate: "2019-07-12T00:43:20"
 heroImage: "/assets/images/dance_shoes_3.jpg"
 categories: ["training-goods"]
-tags: ["", "海外コーチャーレクチャー"]
+tags: ["海外コーチャーレクチャー"]
 author: "itxdancer"
 draft: false
 ---

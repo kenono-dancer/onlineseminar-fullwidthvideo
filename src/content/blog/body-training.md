@@ -5,7 +5,7 @@ pubDate: "2020-09-15T04:39:02"
 updatedDate: "2025-09-17T11:15:49"
 heroImage: "/assets/images/online_training-scaled-e1589743405208_3.jpg"
 categories: ["online-lesson", "training-goods"]
-tags: ["", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "ストレッチ", "トレーニング", "トレーニング道具", "下半身", "心技体", "推進力", "筋肉"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "ストレッチ", "トレーニング", "トレーニング道具", "下半身", "心技体", "推進力", "筋肉"]
 author: "itxdancer"
 draft: false
 ---

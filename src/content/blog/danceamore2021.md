@@ -5,7 +5,7 @@ pubDate: "2021-07-20T18:08:36"
 updatedDate: "2021-07-28T01:30:56"
 heroImage: "/assets/images/back_3.jpg"
 categories: ["uncategorized"]
-tags: ["", "DanceAmore"]
+tags: ["DanceAmore"]
 author: "itxdancer"
 draft: false
 ---

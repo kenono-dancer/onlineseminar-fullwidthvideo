@@ -5,7 +5,7 @@ pubDate: "2020-07-20T02:28:47"
 updatedDate: "2020-07-20T17:55:57"
 heroImage: "/assets/images/50EF96D1-717C-44C9-95D4-2A727A55E8D2-e1595218082251_3.jpeg"
 categories: ["online-lesson"]
-tags: ["", "オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "トレーニング"]
+tags: ["オンライン社交ダンスセミナー／無料で学べるオンライン社交ダンスレッスン", "トレーニング"]
 author: "itxdancer"
 draft: false
 ---
