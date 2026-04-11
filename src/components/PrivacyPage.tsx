@@ -1,15 +1,10 @@
-import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 
 export default function Privacy() {
   return (
     <div className="from-primary/5 via-background to-secondary/5 min-h-screen bg-gradient-to-br p-6">
       <div className="mx-auto max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8 anim-fade-down">
           <a href="/">
             <button
               data-testid="button-back-privacy"
@@ -18,14 +13,9 @@ export default function Privacy() {
               <ArrowLeft className="h-5 w-5" />
             </button>
           </a>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="space-y-8"
-        >
+        <div className="space-y-8 anim-fade-up anim-delay-100">
           <div>
             <h1 className="font-heading text-foreground mb-4 text-4xl font-bold md:text-5xl">
               Privacy Policy
@@ -35,60 +25,35 @@ export default function Privacy() {
           <div className="bg-card rounded-[2rem] border-none shadow-lg">
             <div className="space-y-6 p-8 md:p-12">
               <div className="space-y-3">
-                <h2 className="font-heading text-foreground text-xl font-bold">
-                  Data We Collect
-                </h2>
+                <h2 className="font-heading text-foreground text-xl font-bold">Data We Collect</h2>
                 <p className="text-muted-foreground">
-                  We collect email addresses from users who choose to join our
-                  community. No payment information or sensitive data is
-                  required. Everything is stored locally in your browser using
-                  localStorage.
+                  We collect email addresses from users who choose to join our community. No payment information or sensitive data is required. Everything is stored locally in your browser using localStorage.
                 </p>
               </div>
-
               <div className="space-y-3">
-                <h2 className="font-heading text-foreground text-xl font-bold">
-                  How We Use Your Data
-                </h2>
+                <h2 className="font-heading text-foreground text-xl font-bold">How We Use Your Data</h2>
                 <p className="text-muted-foreground">
-                  Your email is used only for newsletter communications and
-                  community updates. We never sell or share your data with third
-                  parties. You can unsubscribe anytime.
+                  Your email is used only for newsletter communications and community updates. We never sell or share your data with third parties. You can unsubscribe anytime.
                 </p>
               </div>
-
               <div className="space-y-3">
-                <h2 className="font-heading text-foreground text-xl font-bold">
-                  Session Data
-                </h2>
+                <h2 className="font-heading text-foreground text-xl font-bold">Session Data</h2>
                 <p className="text-muted-foreground">
-                  Your meditation sessions and progress are stored locally on
-                  your device. We do not track or collect information about your
-                  usage patterns. You have full control over your data.
+                  Your meditation sessions and progress are stored locally on your device. We do not track or collect information about your usage patterns. You have full control over your data.
                 </p>
               </div>
-
               <div className="space-y-3">
-                <h2 className="font-heading text-foreground text-xl font-bold">
-                  Security
-                </h2>
+                <h2 className="font-heading text-foreground text-xl font-bold">Security</h2>
                 <p className="text-muted-foreground">
-                  We take your privacy seriously. All data transmissions are
-                  encrypted. We follow best practices for web security and
-                  regularly update our systems.
+                  We take your privacy seriously. All data transmissions are encrypted. We follow best practices for web security and regularly update our systems.
                 </p>
               </div>
-
               <div className="space-y-3">
-                <h2 className="font-heading text-foreground text-xl font-bold">
-                  Contact Us
-                </h2>
+                <h2 className="font-heading text-foreground text-xl font-bold">Contact Us</h2>
                 <p className="text-muted-foreground">
-                  If you have concerns about your privacy, please reach out
-                  through our contact page. We're here to help.
+                  If you have concerns about your privacy, please reach out through our contact page. We're here to help.
                 </p>
               </div>
-
               <div className="border-border/40 text-muted-foreground border-t pt-4 text-sm">
                 Last updated: {new Date().toLocaleDateString()}
               </div>
@@ -105,7 +70,7 @@ export default function Privacy() {
               </button>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
