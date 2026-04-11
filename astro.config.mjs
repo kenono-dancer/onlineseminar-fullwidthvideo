@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://itxdancer.com',
   integrations: [react(), sitemap()],
+  build: {
+    // Inline CSS into <style> tags → eliminates render-blocking <link rel="stylesheet">
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {
