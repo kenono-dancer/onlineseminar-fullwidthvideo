@@ -422,8 +422,8 @@ const FeatureCard = ({
           className="mb-8 h-48 w-auto object-contain drop-shadow-md"
           whileHover={{ scale: 1.05 }}
           loading="lazy"
-          width="320"
-          height="180"
+          width="640"
+          height="360"
         />
         <h3 className="font-heading text-foreground mb-3 text-2xl font-bold">
           {title}
