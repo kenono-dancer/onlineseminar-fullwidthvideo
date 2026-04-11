@@ -48,11 +48,17 @@ const totalSeminarCount = allSeminarPosts.length;
       var container = document.getElementById('hero-video-container');
       var heroDiv = document.querySelector('#home > div');
       if (!container || !heroDiv) return false;
+      // READ phase: batch all layout reads first
       var rect = heroDiv.getBoundingClientRect();
       var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      container.style.top = (rect.top + scrollY) + 'px';
-      container.style.height = rect.height + 'px';
-      container.style.visibility = 'visible';
+      var top = rect.top + scrollY;
+      var height = rect.height;
+      // WRITE phase: defer DOM mutations to next frame to avoid forced reflow
+      requestAnimationFrame(function () {
+        container.style.top = top + 'px';
+        container.style.height = height + 'px';
+        container.style.visibility = 'visible';
+      });
       return true;
     }
     function initHeroVideo() {
@@ -60,7 +66,12 @@ const totalSeminarCount = allSeminarPosts.length;
         requestAnimationFrame(initHeroVideo);
         return;
       }
-      window.addEventListener('resize', alignVideoToHero);
+      // Debounce resize: avoid repeated layout reads during window resize
+      var _resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(_resizeTimer);
+        _resizeTimer = setTimeout(alignVideoToHero, 100);
+      }, { passive: true });
       var v = document.getElementById('hero-bg-video');
       if (v) {
         v.muted = true;

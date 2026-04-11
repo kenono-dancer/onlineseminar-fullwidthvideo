@@ -12,24 +12,31 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
       return;
     }
 
-    const handleScroll = () => {
-      const sections = ['home', 'latest-seminars', 'body-training', 'online-ballroomdance-lesson', 'ken-ono'];
-      let current = 'home';
+    const sectionIds = ['home', 'latest-seminars', 'body-training', 'online-ballroomdance-lesson', 'ken-ono'];
+    let rafId: number | null = null;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            current = section;
+    const handleScroll = () => {
+      // rAF throttle: at most once per frame, no forced reflow on scroll thread
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        let current = 'home';
+        for (const id of sectionIds) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 100) {
+            current = id;
           }
         }
-      }
-      setActiveSection(current);
+        setActiveSection((prev) => (prev === current ? prev : current));
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // passive: true — scroll handler never calls preventDefault, lets browser optimize
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const navLinks = [
