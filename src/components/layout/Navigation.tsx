@@ -1,5 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Inline SVGs to remove createLucideIcon.js from Navigation's critical path
 const MenuIcon = () => (
@@ -16,21 +15,18 @@ const XIcon = () => (
 const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Only run scroll spy on homepage
-    if (pathname !== '/') {
-      return;
-    }
+    if (pathname !== '/') return;
 
     const sectionIds = ['home', 'latest-seminars', 'body-training', 'online-ballroomdance-lesson', 'ken-ono'];
-    let rafId: number | null = null;
 
     const handleScroll = () => {
       // rAF throttle: at most once per frame, no forced reflow on scroll thread
-      if (rafId !== null) return;
-      rafId = requestAnimationFrame(() => {
-        rafId = null;
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
         let current = 'home';
         for (const id of sectionIds) {
           const el = document.getElementById(id);
@@ -46,7 +42,7 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (rafId !== null) cancelAnimationFrame(rafId);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
@@ -70,35 +66,29 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
 
       {/* Desktop Nav */}
       <div className="hidden items-center gap-8 font-medium md:flex">
-        {navLinks.map((link) => (
-          <a
-            key={link.id}
-            href={link.href}
-            data-testid={`link-${link.id}`}
-            className={`relative w-fit transition-colors ${(pathname === '/' && activeSection === link.id) ||
-              (pathname.startsWith(link.href) && link.href !== '/')
-              ? 'text-primary font-bold'
-              : 'text-muted-foreground hover:text-primary'
+        {navLinks.map((link) => {
+          const isActive =
+            (pathname === '/' && activeSection === link.id) ||
+            (pathname.startsWith(link.href) && link.href !== '/');
+          return (
+            <a
+              key={link.id}
+              href={link.href}
+              data-testid={`link-${link.id}`}
+              className={`relative w-fit transition-colors hover:scale-105 inline-block ${
+                isActive ? 'text-primary font-bold' : 'text-muted-foreground hover:text-primary'
               }`}
-          >
-            <motion.div whileHover={{ scale: 1.05 }}>
+            >
               {link.label}
-              {((pathname === '/' &&
-                activeSection === link.id) ||
-                (pathname.startsWith(link.href) &&
-                  link.href !== '/')) && (
-                  <motion.div
-                    layoutId="activeIndicatorNav"
-                    className="bg-primary absolute right-0 bottom-[-4px] left-0 h-1 rounded-full"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-            </motion.div>
-          </a>
-        ))}
+              {isActive && (
+                <span className="bg-primary absolute right-0 bottom-[-4px] left-0 h-1 rounded-full" />
+              )}
+            </a>
+          );
+        })}
         <div className="flex flex-col items-center gap-1">
           <a
-                   href="https://lin.ee/tviDWfg"
+            href="https://lin.ee/tviDWfg"
             className="flex items-center bg-[#06C755] text-white px-2 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
           >
             <div className="flex flex-col items-center leading-none -space-y-0.5">
@@ -124,71 +114,48 @@ const Navigation = ({ pathname = '/' }: { pathname?: string }) => {
         {isOpen ? <XIcon /> : <MenuIcon />}
       </button>
 
-      {/* Mobile Nav Menu */}
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="bg-card border-border/60 absolute top-full right-4 left-4 z-50 mt-2 flex w-[calc(100%-2rem)] flex-col gap-6 rounded-2xl border p-8 shadow-2xl md:hidden"
-          >
-            {navLinks.map((link, idx) => (
-              <motion.a
-                key={link.id}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                data-testid={`link-${link.id}-mobile`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{
-                  delay: idx * 0.08,
-                  duration: 0.25,
-                  ease: 'easeOut',
-                }}
-                whileHover={{ x: 4 }}
-                className={`w-fit text-center text-lg font-medium transition-colors duration-300 ${(pathname === '/' &&
-                  activeSection === link.id) ||
-                  (pathname.startsWith(link.href) && link.href !== '/')
-                  ? 'text-primary font-bold'
-                  : 'text-foreground hover:text-primary'
-                  }`}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.div
-              className="border-border/40 border-t pt-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                delay: navLinks.length * 0.08 + 0.1,
-                duration: 0.25,
-              }}
+      {/* Mobile Nav Menu — CSS transitions, no framer-motion */}
+      <div
+        className={`bg-card border-border/60 absolute top-full right-4 left-4 z-50 mt-2 w-[calc(100%-2rem)] flex-col gap-6 rounded-2xl border p-8 shadow-2xl md:hidden transition-all duration-300 ${
+          isOpen ? 'flex opacity-100 translate-y-0' : 'hidden opacity-0 -translate-y-5'
+        }`}
+      >
+        {navLinks.map((link) => {
+          const isActive =
+            (pathname === '/' && activeSection === link.id) ||
+            (pathname.startsWith(link.href) && link.href !== '/');
+          return (
+            <a
+              key={link.id}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              data-testid={`link-${link.id}-mobile`}
+              className={`w-fit text-center text-lg font-medium transition-colors duration-300 hover:translate-x-1 ${
+                isActive ? 'text-primary font-bold' : 'text-foreground hover:text-primary'
+              }`}
             >
-              <div className="flex flex-col items-center gap-2">
-                <a
-                         href="https://lin.ee/tviDWfg"
-                  className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <div className="flex flex-col items-center leading-none -space-y-0.5">
-                    <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
-                      LINE ▶
-                    </span>
-                    <span className="text-base font-bold tracking-tight">
-                      ここから参加
-                    </span>
-                  </div>
-                </a>
+              {link.label}
+            </a>
+          );
+        })}
+        <div className="border-border/40 border-t pt-6">
+          <div className="flex flex-col items-center gap-2">
+            <a
+              href="https://lin.ee/tviDWfg"
+              className="flex items-center justify-center w-full bg-[#06C755] text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl hover:brightness-105 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <div className="flex flex-col items-center leading-none -space-y-0.5">
+                <span className="text-base font-bold tracking-tighter w-fit text-center flex items-center gap-1">
+                  LINE ▶
+                </span>
+                <span className="text-base font-bold tracking-tight">
+                  ここから参加
+                </span>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };
