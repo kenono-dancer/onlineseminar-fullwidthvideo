@@ -85,19 +85,24 @@ const sortedPosts = blogPosts.sort((a, b) => {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         最新の内容 (全 {blogPosts.length} 件)
       </h2>
-      <div class="grid gap-4 grid-cols-1">
+      <ul class="space-y-3">
         {sortedPosts.slice(0, 20).map(post => (
-          <a href={`/${post.id}`} class="block p-4 rounded-2xl hover:bg-secondary/30 transition-colors border border-transparent hover:border-border">
-            <h3 class="font-medium line-clamp-2 mb-1">{post.data.title}</h3>
-            <time class="text-xs text-muted-foreground">{post.data.pubDate?.toLocaleDateString('ja-JP')}</time>
-          </a>
+          <li>
+            <a href={`/${post.id}`} class="text-foreground hover:text-primary transition-colors flex items-start gap-2 group">
+              <span class="w-1.5 h-1.5 bg-primary/40 rounded-full mt-2 group-hover:scale-150 transition-transform shrink-0"></span>
+              <div class="flex flex-col leading-snug">
+                <span class="font-medium line-clamp-1">{post.data.title}</span>
+                <time class="text-xs text-muted-foreground">{post.data.pubDate?.toLocaleDateString('ja-JP')}</time>
+              </div>
+            </a>
+          </li>
         ))}
         {blogPosts.length > 20 && (
-          <div class="flex items-center justify-center p-4">
+          <li class="pl-3.5 pt-2">
             <a href="/blog/" class="text-primary font-bold hover:underline italic">and more...</a>
-          </div>
+          </li>
         )}
-      </div>
+      </ul>
     </section>
 
     <div class="grid gap-12 md:grid-cols-2 mt-12">
