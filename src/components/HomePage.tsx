@@ -369,7 +369,7 @@ export const Footer = () => {
               <h4 className="font-heading text-foreground font-bold">お問い合わせ＆セミナーへ参加</h4>
               <p className="text-muted-foreground text-sm">
                 LINE公式アカウントに登録いただくと無料でセミナーへの参加、過去動画の閲覧ができます。<br />
-                お問い合わせは、LINEもしくは<a href="mailto:narutaku@yahoo.co.jp" className="hover:text-primary underline">メール</a>にてご連絡ください。
+                お問い合わせは、LINEもしくは<a href="/contact/" className="hover:text-primary underline">フォーム</a>よりお願いします。
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
