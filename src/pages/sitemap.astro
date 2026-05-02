@@ -115,8 +115,8 @@ const sortedPosts = blogPosts.sort((a, b) => {
         <ul class="flex flex-wrap gap-x-6 gap-y-3">
           {tags.map(tag => (
             <li>
-              <a href={tag.url} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group text-sm">
-                <span class="w-1 h-1 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
+              <a href={tag.url} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group">
+                <span class="w-1.5 h-1.5 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
                 {tag.label}
               </a>
             </li>
