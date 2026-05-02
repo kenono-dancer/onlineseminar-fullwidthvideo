@@ -72,6 +72,16 @@ import { Footer } from '../components/HomePage';
         },
       })}
     />
+
+    <!-- Google tag (gtag.js) via Partytown -->
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-N3JCZWJ968"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3JCZWJ968');
+    </script>
   </head>
   <body>
     <div class="bg-background selection:bg-primary/20 selection:text-primary-foreground min-h-screen">

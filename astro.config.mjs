@@ -2,10 +2,19 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 
 export default defineConfig({
   site: 'https://itxdancer.com',
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(), 
+    sitemap(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
+  ],
   build: {
     // Inline CSS into <style> tags → eliminates render-blocking <link rel="stylesheet">
     inlineStylesheets: 'always',

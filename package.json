@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@astrojs/partytown": "^2.1.7",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.2",
     "astro": "^5.16.9",
