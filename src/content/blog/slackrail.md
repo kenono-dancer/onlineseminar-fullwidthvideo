@@ -49,3 +49,9 @@ posted with [カエレバ](<https://kaereba.com>)
 [楽天市場](<//af.moshimo.com/af/c/click?a_id=1218038&p_id=54&pc_id=54&pl_id=616&s_v=b5Rz2P0601xu&url=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2582%25B9%25E3%2583%25A9%25E3%2583%2583%25E3%2582%25AF%25E3%2583%25AC%25E3%2583%25BC%25E3%2583%25AB%2F-%2Ff.1-p.1-s.1-sf.0-st.A-v.2%3Fx%3D0>)
 [Amazon](<//af.moshimo.com/af/c/click?a_id=1218044&p_id=170&pc_id=185&pl_id=4062&s_v=b5Rz2P0601xu&url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fsearch%3Fkeywords%3D%25E3%2582%25B9%25E3%2583%25A9%25E3%2583%2583%25E3%2582%25AF%25E3%2583%25AC%25E3%2583%25BC%25E3%2583%25AB%26__mk_ja_JP%3D%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A>)
 [Yahooショッピング](<//af.moshimo.com/af/c/click?a_id=1297207&p_id=1225&pc_id=1925&pl_id=18502&s_v=b5Rz2P0601xu&url=http%3A%2F%2Fsearch.shopping.yahoo.co.jp%2Fsearch%3Fp%3D%25E3%2582%25B9%25E3%2583%25A9%25E3%2583%2583%25E3%2582%25AF%25E3%2583%25AC%25E3%2583%25BC%25E3%2583%25AB>)
+
+<div class="flex justify-center mt-12 mb-8">
+  <a href="/body-training/" class="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-all no-underline inline-block" style="color: white !important;">
+    オンライン体幹トレーニングの情報を見てみる
+  </a>
+</div>
