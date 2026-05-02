@@ -35,7 +35,7 @@ menuOrder: 0
 - [バランスボール](/balance_ball/)
 - [ソフトギムニクボール](/gymnic_ball/)（サッカーボールサイズ）
 - [ストレッチポール](/stretchpole/)
-- バランスディスク
+- [バランスディスク](/balance_disk/)
 - [ゴムチューブ](/rubber-band/)
 - [スラックレール](/slackrail/)
 などなど、テーマに合わせて楽しく体幹を鍛えます。
