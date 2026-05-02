@@ -11,10 +11,11 @@ export default function Contact() {
     e.preventDefault();
     if (name && email && message) {
       try {
-        const response = await fetch('https://formspree.io/ken@itxdancer.com', {
+        const response = await fetch('https://formsubmit.co/ajax/ken@itxdancer.com', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify({
             name,
