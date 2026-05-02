@@ -7,12 +7,11 @@ import tagMap from '../data/tagMap.json';
 // Static pages from src/pages/ (manually listed for simplicity and design control)
 const staticPages = [
   { url: '/', label: 'ホーム' },
-  { url: '/blog/', label: '新着一覧' },
   { url: '/#latest-seminars', label: '社交ダンスセミナー' },
   { url: '/#body-training', label: '体幹トレーニング' },
   { url: '/#online-ballroomdance-lesson', label: '個人レッスン' },
-  { url: '/contact/', label: 'お問い合わせ' },
   { url: '/ken-ono/', label: '講師 大埜健プロフィール' },
+  { url: '/contact/', label: 'お問い合わせ' },
 ];
 
 // Dynamic pages from content collections
@@ -86,7 +85,7 @@ const sortedPosts = blogPosts.sort((a, b) => {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         最新の内容 (全 {blogPosts.length} 件)
       </h2>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-4 grid-cols-1">
         {sortedPosts.slice(0, 20).map(post => (
           <a href={`/${post.id}`} class="block p-4 rounded-2xl hover:bg-secondary/30 transition-colors border border-transparent hover:border-border">
             <h3 class="font-medium line-clamp-2 mb-1">{post.data.title}</h3>
