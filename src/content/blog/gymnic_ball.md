@@ -35,3 +35,9 @@ msmaflink({"n":"エバニュー(EVERNEW) ソフトギムニク ETE301 青","b":"
  
 ## 入門用にお安いソフトギムニクボールが欲しい方
 100円ショップでも大きめの店舗なら売っています。空気を抜いた状態でたたんで売っています。空気を入れるのに、空気入れが必要なこともあるので、ご注意ください。お使いいただいている方もいるので大丈夫とは思いますが、私は体重をかけるのが怖いので使っていないです（笑）
+
+<div class="flex justify-center mt-12 mb-8">
+  <a href="/body-training/" class="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-all no-underline inline-block" style="color: white !important;">
+    オンライン体幹トレーニングの情報を見てみる
+  </a>
+</div>
