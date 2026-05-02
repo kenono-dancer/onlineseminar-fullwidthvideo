@@ -47,8 +47,7 @@ menuOrder: 0
 カレンダー右下の「+ Googleカレンダーに追加」ボタンから、ご自分のスマホのGoogleカレンダーに登録することも可能です。
 <iframe style="border: solid 1px #777; width: 100%; max-width: 800px; aspect-ratio: 16/9; margin-top: 1rem; border-radius: 0.5rem;" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=ZjR2ajVrZ3R1OWVyZ3AydGhtMXJiYXU3aDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23009688" frameborder="0" scrolling="no"></iframe>
 ## 料金
-25分 1,000円 / 回（最大4人までの少人数制）  
-※お一人の場合は20分間になります。
+25分 1,000円／回（最大4人までの少人数制）
 
 ### 割引制度
 定期的にお得に受けられる割引をご用意しています。
