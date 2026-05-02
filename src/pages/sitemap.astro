@@ -7,22 +7,21 @@ import tagMap from '../data/tagMap.json';
 // Static pages from src/pages/ (manually listed for simplicity and design control)
 const staticPages = [
   { url: '/', label: 'ホーム' },
-  { url: '/blog/', label: '新着一覧 (ブログ)' },
-  { url: '/about/', label: 'サイトについて' },
+  { url: '/blog/', label: '新着一覧' },
   { url: '/contact/', label: 'お問い合わせ' },
-  { url: '/privacy/', label: 'プライバシーポリシー' },
   { url: '/ken-ono/', label: '講師 大埜健プロフィール' },
 ];
 
 // Dynamic pages from content collections
-const contentPages = await getCollection('pages', ({ data }) => !data.draft);
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 
 // Categories
-const categories = Object.entries(categoryMap).map(([id, label]) => ({
-  url: `/category/${id}/`,
-  label: label as string,
-}));
+const categories = Object.entries(categoryMap)
+  .sort(([idA], [idB]) => (idA === 'online-lesson' ? -1 : idB === 'online-lesson' ? 1 : 0))
+  .map(([id, label]) => ({
+    url: `/category/${id}/`,
+    label: label as string,
+  }));
 
 // Tags
 const tags = Object.entries(tagMap).map(([id, label]) => ({
@@ -59,21 +58,6 @@ const sortedPosts = blogPosts.sort((a, b) => {
             </li>
           ))}
         </ul>
-
-        <h3 class="text-xl font-heading text-primary mt-8 mb-4 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>
-          固定ページ
-        </h3>
-        <ul class="space-y-3">
-          {contentPages.filter(p => p.id !== 'ken-ono').map(page => (
-            <li>
-              <a href={`/${page.id}/`} class="text-foreground hover:text-primary transition-colors flex items-center gap-2 group">
-                <span class="w-1.5 h-1.5 bg-primary/40 rounded-full group-hover:scale-150 transition-transform"></span>
-                {page.data.title}
-              </a>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <!-- Section: Categories -->
@@ -93,6 +77,28 @@ const sortedPosts = blogPosts.sort((a, b) => {
           ))}
         </ul>
       </section>
+    <!-- Section: Recent Blog Posts -->
+    <section class="mt-12 bg-card p-8 rounded-3xl shadow-sm border border-border">
+      <h2 class="text-2xl font-heading text-primary mb-8 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        最新の内容 (全 {blogPosts.length} 件)
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts.slice(0, 20).map(post => (
+          <a href={`/${post.id}`} class="block p-4 rounded-2xl hover:bg-secondary/30 transition-colors border border-transparent hover:border-border">
+            <h3 class="font-medium line-clamp-2 mb-1">{post.data.title}</h3>
+            <time class="text-xs text-muted-foreground">{post.data.pubDate?.toLocaleDateString('ja-JP')}</time>
+          </a>
+        ))}
+        {blogPosts.length > 20 && (
+          <div class="flex items-center justify-center p-4">
+            <a href="/blog/" class="text-primary font-bold hover:underline italic">and more...</a>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <div class="grid gap-12 md:grid-cols-2 mt-12">
       <!-- Section: Tags -->
       <section class="bg-card p-8 rounded-3xl shadow-sm border border-border md:col-span-2">
         <h2 class="text-2xl font-heading text-primary mb-6 flex items-center gap-2">
@@ -111,26 +117,5 @@ const sortedPosts = blogPosts.sort((a, b) => {
         </ul>
       </section>
     </div>
-
-    <!-- Section: Recent Blog Posts -->
-    <section class="mt-12 bg-card p-8 rounded-3xl shadow-sm border border-border">
-      <h2 class="text-2xl font-heading text-primary mb-8 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        最新の記事 (全 {blogPosts.length} 件)
-      </h2>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {sortedPosts.slice(0, 100).map(post => (
-          <a href={`/${post.id}`} class="block p-4 rounded-2xl hover:bg-secondary/30 transition-colors border border-transparent hover:border-border">
-            <h3 class="font-medium line-clamp-2 mb-1">{post.data.title}</h3>
-            <time class="text-xs text-muted-foreground">{post.data.pubDate?.toLocaleDateString('ja-JP')}</time>
-          </a>
-        ))}
-        {blogPosts.length > 100 && (
-          <div class="flex items-center justify-center p-4">
-            <a href="/blog/" class="text-primary font-bold hover:underline italic">and more...</a>
-          </div>
-        )}
-      </div>
-    </section>
   </main>
 </Layout>

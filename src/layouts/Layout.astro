@@ -7,10 +7,10 @@ interface Props {
 }
 
 const {
-  title = 'オンライン社交ダンスセミナー/大埜 健のオンライン社交ダンスレッスン',
-  description = 'Find your zen with cat-inspired meditation. Guided breathing exercises, mindfulness sessions, and feline wisdom to help you relax.',
+  title = 'オンライン社交ダンスセミナー | 大埜 健のオンライン社交ダンスレッスン',
+  description = '東京・品川のプロ社交ダンスインストラクター大埜 健が毎週開催する無料オンライン社交ダンスセミナー。テクニック・理論・機能解剖学に基づいた指導で500回以上継続中。Zoomで全国から参加可能。',
   canonicalPath = '',
-  noindex = true,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site?.href || '';
@@ -21,48 +21,54 @@ import { Footer } from '../components/HomePage';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#E8A598" />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="robots" content="index,follow" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
 
     <title>{title}</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3JCZWJ968"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N3JCZWJ968');
-    </script>
-
+    <!-- Google Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patrick+Hand&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patrick+Hand&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'WebApplication',
-        name: 'Purrfectly Zen',
-        description: 'Cat-inspired meditation and mindfulness application',
-        applicationCategory: 'HealthApplication',
-        operatingSystem: 'Web',
+        '@type': 'EducationalOrganization',
+        name: 'ITxDANCER オンライン社交ダンスセミナー',
+        description: '東京・品川のプロ社交ダンスインストラクター大埜 健が毎週開催する無料オンライン社交ダンスセミナー',
+        url: 'https://itxdancer.com',
+        inLanguage: 'ja',
+        founder: {
+          '@type': 'Person',
+          name: '大埜 健',
+          jobTitle: 'プロ社交ダンスインストラクター',
+        },
         offers: {
           '@type': 'Offer',
           price: '0',
-          priceCurrency: 'USD',
+          priceCurrency: 'JPY',
+          description: '無料オンライン社交ダンスセミナー',
         },
       })}
     />
@@ -118,6 +124,8 @@ import { Footer } from '../components/HomePage';
 
     --primary: 6 78% 75%;
     --primary-foreground: 25 10% 20%;
+    /* アクセシブルな濃色テキスト用（WCAG AA 4.5:1 以上） */
+    --primary-text: 6 65% 36%;
 
     --secondary: 140 25% 85%;
     --secondary-foreground: 140 30% 25%;
@@ -166,6 +174,11 @@ import { Footer } from '../components/HomePage';
     h6 {
       @apply font-heading font-semibold tracking-tight;
     }
+  }
+
+  /* WCAG AA準拠テキストカラー（ライト背景用） */
+  .text-primary-dark {
+    color: hsl(var(--primary-text));
   }
 
   button,
@@ -238,6 +251,49 @@ import { Footer } from '../components/HomePage';
     padding-left: 1rem;
     color: hsl(var(--muted-foreground));
     font-style: italic;
+  }
+
+  /* ── On-mount CSS animations (replaces framer-motion initial/animate) ── */
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .anim-fade-down { animation: fadeSlideDown 0.6s ease both; }
+  .anim-fade-up   { animation: fadeSlideUp   0.6s ease both; }
+  .anim-fade-in   { animation: fadeIn        0.6s ease both; }
+  .anim-delay-100 { animation-delay: 0.1s; }
+  .anim-delay-200 { animation-delay: 0.2s; }
+  .anim-delay-300 { animation-delay: 0.3s; }
+  .anim-delay-500 { animation-delay: 0.5s; }
+
+  /* ── Scroll-reveal (replaces framer-motion whileInView) ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
   }
 </style>
 

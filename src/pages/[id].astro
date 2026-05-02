@@ -55,6 +55,9 @@ const truncateTitle = (title: string, length: number) => {
             src={data.data.heroImage}
             alt=""
             class="w-full h-auto rounded-2xl mb-8 object-cover"
+            fetchpriority="high"
+            width="1200"
+            height="675"
           />
         )}
         
@@ -102,6 +105,9 @@ const truncateTitle = (title: string, length: number) => {
                 src={data.data.heroImage}
                 alt=""
                 class="w-full h-auto rounded-2xl mb-8 object-cover"
+                fetchpriority="high"
+                width="1200"
+                height="675"
               />
             )}
             
@@ -202,18 +208,5 @@ const truncateTitle = (title: string, length: number) => {
     </main>
   </Layout>
 )}
-
-<style is:global>
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 10px;
-  }
-</style>
 
 
